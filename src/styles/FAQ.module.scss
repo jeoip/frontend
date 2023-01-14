@@ -1,0 +1,10 @@
+.faq {
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  &__arrow {
+    color: var(--primary-color);
+  }
+}

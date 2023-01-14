@@ -1,5 +1,6 @@
-import Footer from '@/components/Footer'
-import Head from 'next/head'
+import FAQ from "@/components/base/FAQ";
+import Footer from "@/components/Footer";
+import Head from "next/head";
 
 export default function Home() {
   return (
@@ -11,10 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Footer></Footer>
+        <FAQ className="mx-3"/>
       </main>
-      <footer>
-      </footer>
+      {/* <Footer></Footer> */}
     </>
-  )
+  );
 }

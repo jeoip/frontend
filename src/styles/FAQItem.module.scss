@@ -1,0 +1,17 @@
+.faq-item {
+  &__question {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  &__answer {
+    font-weight: normal;
+    font-size: 13px;
+  }
+
+  &__question, &__answer {
+    color: var(--text-regular-color);
+    text-align: right;
+    direction: rtl;
+  }
+}
