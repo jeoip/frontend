@@ -15,7 +15,7 @@ const Footer = () => {
         <ContactUs/>
       </div>
       <div className={`${styles["footer__container"]} d-block d-sm-none`}>
-        <Brand row={false}></Brand>
+        <Brand row={false} iconSize={75}></Brand>
         <div
           className={`d-flex flex-column justify-content-center align-items-end`}
         >

@@ -1,16 +1,20 @@
-import BrandProp from "@/types/props/Brand";
+import BrandProp from "@/types/props/BrandProps";
+import Props from "@/types/props/Props";
 import Image from "next/image";
 import React from "react";
 import styles from "../../styles/Brand.module.scss";
 
-const Brand = (props: React.PropsWithChildren<BrandProp>) => {
+const Brand = (props: React.PropsWithChildren<Props & BrandProp>) => {
+
+  const iconSize = props.iconSize || 38
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       {!props.row && (
         <Image
           src="/jeo.svg"
-          width={38}
-          height={38}
+          width={iconSize}
+          height={iconSize}
           alt="jeoip"
         />
       )}
@@ -20,8 +24,8 @@ const Brand = (props: React.PropsWithChildren<BrandProp>) => {
           <Image
             className="my-auto"
             src="/jeo.svg"
-            width={38}
-            height={38}
+            width={iconSize}
+            height={iconSize}
             alt="jeoip"
           />
         )}

@@ -1,3 +1,4 @@
 export default interface BrandProp {
-  row: Boolean
+  iconSize?: number,
+  row: boolean,
 }
