@@ -32,7 +32,7 @@ const FAQ: React.FC<Props> = (props) => {
       <div className="d-flex flex-row justify-content-end">
         <p className={`${styles["faq__title"]} my-auto mx-1`}>سوالات متداول</p>
         <span
-          className={`${styles["faq__arrow"]} my-auto mdi mdi-rotate-270 mdi-arrow-up-bold`}
+          className={`${styles["faq__arrow"]} my-auto mdi mdi-rotate-315 mdi-arrow-top-left`}
         ></span>
       </div>
       <div className="mt-3">

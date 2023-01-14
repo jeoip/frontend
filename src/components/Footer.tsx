@@ -12,7 +12,7 @@ const Footer = () => {
         className={`d-none d-sm-flex flex-row justify-content-around`}
       >
         <Links/>
-        <Brand row={false}></Brand>
+        <Brand row={false} iconSize={75}></Brand>
         <ContactUs/>
       </div>
       <div className={`d-block d-sm-none`}>
