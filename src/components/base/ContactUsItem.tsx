@@ -1,6 +1,6 @@
 import ContactUsItemProps from "@/types/props/ContactUsItemProps";
 import React from "react";
-import styles from "./ContactUsItem.module.scss";
+import styles from "../../styles/ContactUsItem.module.scss";
 
 const ContactUsItem = (props: React.PropsWithChildren<ContactUsItemProps>) => {
   return (

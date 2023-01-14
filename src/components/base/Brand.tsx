@@ -1,7 +1,7 @@
 import BrandProp from "@/types/props/Brand";
 import Image from "next/image";
 import React from "react";
-import styles from "./Brand.module.scss";
+import styles from "../../styles/Brand.module.scss";
 
 const Brand = (props: React.PropsWithChildren<BrandProp>) => {
   return (

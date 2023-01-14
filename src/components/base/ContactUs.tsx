@@ -1,5 +1,5 @@
 import ContactUsItem from "./ContactUsItem";
-import styles from './ContactUs.module.scss'
+import styles from '../../styles/ContactUs.module.scss'
 
 const ContactUs = () => {
   return (

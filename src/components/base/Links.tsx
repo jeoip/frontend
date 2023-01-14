@@ -1,5 +1,5 @@
 import Link from './Link';
-import styles from './Links.module.scss'
+import styles from '../../styles/Links.module.scss'
 
 const Links = () => {
   const links = [

@@ -1,5 +1,5 @@
 import LinkProps from "@/types/props/LinkProps";
-import styles from './Link.module.scss'
+import styles from '../../styles/Link.module.scss'
 
 const Link = (props: React.PropsWithChildren<LinkProps>) => {
   return (
