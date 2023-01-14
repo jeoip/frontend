@@ -1,4 +1,3 @@
-import ContactUs from '@/components/base/ContactUs'
 import Head from 'next/head'
 
 export default function Home() {
@@ -11,7 +10,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ContactUs></ContactUs>
       </main>
       <footer>
       </footer>
