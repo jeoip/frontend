@@ -1,5 +1,4 @@
-import Brand from '@/components/base/Brand'
-import Links from '@/components/base/Links'
+import ContactUs from '@/components/base/ContactUs'
 import Head from 'next/head'
 
 export default function Home() {
@@ -12,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Links></Links>
+        <ContactUs></ContactUs>
       </main>
       <footer>
       </footer>
