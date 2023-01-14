@@ -8,7 +8,6 @@ const Brand = (props: React.PropsWithChildren<BrandProp>) => {
     <div className="d-flex flex-column justify-content-center align-items-center">
       {!props.row && (
         <Image
-          className="my-auto"
           src="/jeo.svg"
           width={38}
           height={38}
