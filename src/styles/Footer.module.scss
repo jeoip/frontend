@@ -1,0 +1,11 @@
+.footer {
+  &__container {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 1rem;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    background-color: #F5F5F5;
+  }
+}

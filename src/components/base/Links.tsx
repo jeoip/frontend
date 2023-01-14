@@ -1,5 +1,6 @@
 import Link from './Link';
 import styles from '../../styles/Links.module.scss'
+import React from 'react';
 
 const Links = () => {
   const links = [
@@ -22,10 +23,10 @@ const Links = () => {
   ];
 
   return (
-    <div className="d-flex flex-column align-items-end">
+    <div className={`d-flex flex-column align-items-end`}>
       <p className={`${styles['links__title']}`}> ما را دنبال کنید در:</p>
-      {links.map((link) => (
-        <Link title={link.title} href={link.href}></Link>
+      {links.map((link, index) => (
+        <Link title={link.title} href={link.href} key={index}></Link>
       ))}
     </div>
   );
