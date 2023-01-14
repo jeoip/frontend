@@ -1,5 +1,5 @@
+import Brand from '@/components/base/Brand'
 import Head from 'next/head'
-import Card from '@/components/base/Card'
 
 export default function Home() {
   return (
@@ -11,6 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Brand row={true}></Brand>
       </main>
       <footer>
       </footer>
