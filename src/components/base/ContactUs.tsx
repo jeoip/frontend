@@ -25,7 +25,7 @@ const ContactUs = () => {
 
   return (
     <div>
-      <div className="d-flex flex-row justify-content-center">
+      <div className="d-flex flex-row justify-content-end justify-content-sm-center">
         <p className={`${styles["contact-us__title"]}`}>با ما در تماس باشید</p>
       </div>
       <div className="d-flex flex-column align-items-end">
