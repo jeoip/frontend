@@ -1,4 +1,5 @@
 import Brand from '@/components/base/Brand'
+import Links from '@/components/base/Links'
 import Head from 'next/head'
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Brand row={true}></Brand>
+        <Links></Links>
       </main>
       <footer>
       </footer>

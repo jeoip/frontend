@@ -1,0 +1,13 @@
+.link {
+  text-decoration: none;
+
+  &__text {
+    font-size: 13px;
+    font-family: regular;
+    color: var(--text-regular-color)
+  }
+
+  &__icon {
+    color: var(--primary-color);
+  }
+}
