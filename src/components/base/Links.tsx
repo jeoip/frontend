@@ -1,8 +1,9 @@
 import Link from './Link';
 import styles from '../../styles/Links.module.scss'
 import React from 'react';
+import Props from '@/types/props/Props';
 
-const Links = () => {
+const Links: React.FC<Props> = (props) => {
   const links = [
     {
       title: "هلدینگ داده نگار جی",
@@ -23,7 +24,7 @@ const Links = () => {
   ];
 
   return (
-    <div className={`d-flex flex-column align-items-end`}>
+    <div className={`${props.className} d-flex flex-column align-items-end`}>
       <p className={`${styles['links__title']}`}> ما را دنبال کنید در:</p>
       {links.map((link, index) => (
         <Link title={link.title} href={link.href} key={index}></Link>
