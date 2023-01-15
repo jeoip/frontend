@@ -35,9 +35,9 @@ const IPInformationItems: React.FC<Props> = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        {items.map((item) => {
+        {items.map((item, index) => {
           return (
-            <div className="col d-flex flex-column align-items-end">
+            <div className="col d-flex flex-column align-items-end" key={index}>
               <IPInformationItem
                 title={item.title}
                 value={item.value}

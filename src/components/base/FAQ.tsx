@@ -36,8 +36,8 @@ const FAQ: React.FC<Props> = (props) => {
         ></span>
       </div>
       <div className="mt-3">
-        {items.map((item) => (
-          <FAQItem question={item.question} answer={item.answer} />
+        {items.map((item, index) => (
+          <FAQItem question={item.question} answer={item.answer} key={index} />
         ))}
       </div>
     </div>
