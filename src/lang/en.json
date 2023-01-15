@@ -5,5 +5,8 @@
   "ip.data.table.title": "Your IP Information:",
   "faq.title": "FAQ",
   "contact.us.title": "Contact Us",
+  "contact.us.phone": "Phone:",
+  "contact.us.email": "Email:",
+  "contact.us.support": "Support:",
   "links.title": "Follow Us:"
 }

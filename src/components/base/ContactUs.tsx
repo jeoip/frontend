@@ -5,19 +5,19 @@ import { FormattedMessage } from "react-intl";
 const ContactUs = () => {
   const items = [
     {
-      title: "شماره تماس:",
+      title: "contact.us.phone",
       value: "031-34420301",
       href: "#",
       icon: "mdi-phone",
     },
     {
-      title: "پست الکترونیک",
+      title: "contact.us.email",
       value: "hi@dnj.co.ir",
       href: "#",
       icon: "mdi-email",
     },
     {
-      title: "پشتیبانی فنی",
+      title: "contact.us.support",
       value: "کلیک کنید",
       href: "#",
       icon: "mdi-headset",
