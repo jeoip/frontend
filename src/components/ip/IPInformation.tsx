@@ -2,6 +2,8 @@ import Props from "@/types/props/Props";
 import styles from "@/styles/IPInformation.module.scss";
 import IPInformationItemProps from "@/types/props/IPInformationItemProps";
 import { FormattedMessage } from "react-intl";
+import { useContext } from "react";
+import IPContext from "@/store/IPContext";
 
 const IPInformationItem: React.FC<Props & IPInformationItemProps> = (props) => {
   return (
@@ -22,15 +24,18 @@ const IPInformationItem: React.FC<Props & IPInformationItemProps> = (props) => {
 };
 
 const IPInformationItems: React.FC<Props> = () => {
+
+  const ctx = useContext(IPContext)
+
   const items = [
     {
       title: "ip.informations.location",
-      value: "فرانسه / Paris شهر ",
+      value: `${ctx?.city} / ${ctx?.country}`,
       icon: "mdi-map-marker-outline",
     },
     {
-      title: "Subnet",
-      value: "164.132.138.0/17",
+      title: "ip.informations.subnet",
+      value: ctx?.subnet,
       icon: "mdi-television",
     },
   ];
@@ -55,13 +60,16 @@ const IPInformationItems: React.FC<Props> = () => {
 };
 
 const IPInformation: React.FC<Props> = (props) => {
+
+  const ctx = useContext(IPContext)
+
   return (
     <div className={props.className}>
       <p className={`${styles["ip-information__title"]}`}>
         <FormattedMessage id="ip.informations.title" />
       </p>
       <div className="d-flex flex-row justify-content-between">
-        <p className={`${styles["ip-information__ip"]}`}>141.012.345.123</p>
+        <p className={`${styles["ip-information__ip"]}`}>{ctx?.ip}</p>
         <button className={`${styles["ip-information__btn"]}`}>
           <FormattedMessage id="ip.informations.btn"/>
         </button>

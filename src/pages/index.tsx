@@ -38,7 +38,7 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <main dir={getDirection()}>
-        <IPCard></IPCard>
+        <IPCard/>
       </main>
       <Footer dir={getDirection()}></Footer>
     </>
