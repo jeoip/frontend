@@ -6,7 +6,9 @@ import { FormattedMessage } from "react-intl";
 const IPInformationItem: React.FC<Props & IPInformationItemProps> = (props) => {
   return (
     <>
-      <p className={`${styles["ip-information-item__title"]}`}>{props.title}</p>
+      <p className={`${styles["ip-information-item__title"]}`}>
+        <FormattedMessage id={props.title}/>
+      </p>
       <div className={`${styles["ip-information-item__body"]} d-flex flex-row`}>
         <span
           className={`${styles["ip-information-item__icon"]} my-auto mdi ${props.icon}`}
@@ -22,7 +24,7 @@ const IPInformationItem: React.FC<Props & IPInformationItemProps> = (props) => {
 const IPInformationItems: React.FC<Props> = () => {
   const items = [
     {
-      title: "موقعیت جغرافیایی",
+      title: "ip.informations.location",
       value: "فرانسه / Paris شهر ",
       icon: "mdi-map-marker-outline",
     },
