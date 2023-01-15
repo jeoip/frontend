@@ -1,9 +1,10 @@
+import Props from "@/types/props/Props";
 import React from "react";
-import styles from "../../styles/Card.module.scss";
+import styles from "@/styles/Card.module.scss";
 
-const Card = (props: React.PropsWithChildren) => {
+const Card: React.FC<Props> = (props) => {
   return (
-    <div className={styles["card__container"]}>
+    <div className={`${styles["card__container"]} ${props.className}`}>
       {props.children}
     </div>
   );

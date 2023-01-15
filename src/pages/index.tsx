@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import IPDataTable from "@/components/ip/IPDataTable";
+import IPCard from "@/components/IPCard";
 import Head from "next/head";
 
 export default function Home() {
@@ -12,7 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <IPDataTable></IPDataTable>
+        <div className="d-flex flex-row justify-content-end">
+          <IPCard></IPCard>
+        </div>
       </main>
       {/* <Footer></Footer> */}
     </>
