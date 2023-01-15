@@ -1,6 +1,7 @@
 import Props from "@/types/props/Props";
 import styles from "@/styles/FAQ.module.scss";
 import FAQItem from "./FAQItem";
+import { FormattedMessage } from "react-intl";
 
 const FAQ: React.FC<Props> = (props) => {
   const items = [
@@ -29,11 +30,13 @@ const FAQ: React.FC<Props> = (props) => {
 
   return (
     <div className={props.className}>
-      <div className="d-flex flex-row justify-content-end">
-        <p className={`${styles["faq__title"]} my-auto mx-1`}>سوالات متداول</p>
+      <div className="d-flex flex-row">
         <span
           className={`${styles["faq__arrow"]} my-auto mdi mdi-rotate-315 mdi-arrow-top-left`}
         ></span>
+        <p className={`${styles["faq__title"]} my-auto mx-1`}>
+          <FormattedMessage id="faq.title"/>
+        </p>
       </div>
       <div className="mt-3">
         {items.map((item, index) => (

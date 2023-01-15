@@ -1,18 +1,19 @@
 import Props from "@/types/props/Props";
 import styles from "@/styles/IPInformation.module.scss";
 import IPInformationItemProps from "@/types/props/IPInformationItemProps";
+import { FormattedMessage } from "react-intl";
 
 const IPInformationItem: React.FC<Props & IPInformationItemProps> = (props) => {
   return (
     <>
       <p className={`${styles["ip-information-item__title"]}`}>{props.title}</p>
       <div className={`${styles["ip-information-item__body"]} d-flex flex-row`}>
-        <p className={`${styles["ip-information-item__value"]} mx-1 my-auto`}>
-          {props.value}
-        </p>
         <span
           className={`${styles["ip-information-item__icon"]} my-auto mdi ${props.icon}`}
         ></span>
+        <p className={`${styles["ip-information-item__value"]} mx-1 my-auto`}>
+          {props.value}
+        </p>
       </div>
     </>
   );
@@ -21,14 +22,14 @@ const IPInformationItem: React.FC<Props & IPInformationItemProps> = (props) => {
 const IPInformationItems: React.FC<Props> = () => {
   const items = [
     {
-      title: 'Subnet',
-      value: '164.132.138.0/17',
-      icon: 'mdi-television',
+      title: "موقعیت جغرافیایی",
+      value: "فرانسه / Paris شهر ",
+      icon: "mdi-map-marker-outline",
     },
     {
-      title: 'موقعیت جغرافیایی',
-      value: 'فرانسه / Paris شهر ',
-      icon: 'mdi-map-marker-outline',
+      title: "Subnet",
+      value: "164.132.138.0/17",
+      icon: "mdi-television",
     },
   ];
 
@@ -37,7 +38,7 @@ const IPInformationItems: React.FC<Props> = () => {
       <div className="row">
         {items.map((item, index) => {
           return (
-            <div className="col d-flex flex-column align-items-end" key={index}>
+            <div className="col d-flex flex-column" key={index}>
               <IPInformationItem
                 title={item.title}
                 value={item.value}
@@ -54,14 +55,14 @@ const IPInformationItems: React.FC<Props> = () => {
 const IPInformation: React.FC<Props> = (props) => {
   return (
     <div className={props.className}>
-      <div className="d-flex flex-row justify-content-end">
-        <p className={`${styles["ip-information__title"]}`}>
-          آی پی عمومی شما در حال حاضر:
-        </p>
-      </div>
+      <p className={`${styles["ip-information__title"]}`}>
+        <FormattedMessage id="ip.informations.title" />
+      </p>
       <div className="d-flex flex-row justify-content-between">
-        <button className={`${styles["ip-information__btn"]}`}>عمومی</button>
         <p className={`${styles["ip-information__ip"]}`}>141.012.345.123</p>
+        <button className={`${styles["ip-information__btn"]}`}>
+          <FormattedMessage id="ip.informations.btn"/>
+        </button>
       </div>
       <IPInformationItems />
     </div>

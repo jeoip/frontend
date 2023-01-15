@@ -2,6 +2,7 @@ import Link from './Link';
 import styles from '../../styles/Links.module.scss'
 import React from 'react';
 import Props from '@/types/props/Props';
+import { FormattedMessage } from 'react-intl';
 
 const Links: React.FC<Props> = (props) => {
   const links = [
@@ -24,8 +25,10 @@ const Links: React.FC<Props> = (props) => {
   ];
 
   return (
-    <div className={`${props.className} d-flex flex-column align-items-end`}>
-      <p className={`${styles['links__title']}`}> ما را دنبال کنید در:</p>
+    <div className={`${props.className} d-flex flex-column`}>
+      <p className={`${styles['links__title']}`}>
+        <FormattedMessage id="links.title"/>
+      </p>
       {links.map((link, index) => (
         <Link title={link.title} href={link.href} key={index}></Link>
       ))}

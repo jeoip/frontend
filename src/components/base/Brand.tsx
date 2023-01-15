@@ -3,6 +3,7 @@ import Props from "@/types/props/Props";
 import Image from "next/image";
 import React from "react";
 import styles from "../../styles/Brand.module.scss";
+import { FormattedMessage } from "react-intl";
 
 const Brand = (props: React.PropsWithChildren<Props & BrandProp>) => {
 
@@ -31,7 +32,7 @@ const Brand = (props: React.PropsWithChildren<Props & BrandProp>) => {
         )}
       </div>
       <p className={`${styles["brand__subtitle"]} mt-1`}>
-        ابزاری برای دریافت اطلاعات آی پی
+        <FormattedMessage id="brand.subtitle"/>
       </p>
     </div>
   );

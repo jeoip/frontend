@@ -1,5 +1,6 @@
 import ContactUsItem from "./ContactUsItem";
 import styles from "../../styles/ContactUs.module.scss";
+import { FormattedMessage } from "react-intl";
 
 const ContactUs = () => {
   const items = [
@@ -25,10 +26,12 @@ const ContactUs = () => {
 
   return (
     <div>
-      <div className="d-flex flex-row justify-content-end justify-content-sm-center">
-        <p className={`${styles["contact-us__title"]}`}>با ما در تماس باشید</p>
+      <div className="d-flex flex-row justify-content-sm-center">
+        <p className={`${styles["contact-us__title"]}`}>
+          <FormattedMessage id="contact.us.title"/>
+        </p>
       </div>
-      <div className="d-flex flex-column align-items-end">
+      <div className="d-flex flex-column">
         {items.map((item, index) => (
           <ContactUsItem
             title={item.title}
