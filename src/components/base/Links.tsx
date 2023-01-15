@@ -7,19 +7,19 @@ import { FormattedMessage } from 'react-intl';
 const Links: React.FC<Props> = (props) => {
   const links = [
     {
-      title: "هلدینگ داده نگار جی",
+      title: "links.dnj.holding",
       href: "https://dnj.co.ir",
     },
     {
-      title: "جی سرور",
+      title: "links.jey.server",
       href: "https://jeyserver.com",
     },
     {
-      title: "وب شات",
+      title: "links.web.shot",
       href: "https://web-shot.ir",
     },
     {
-      title: "JeoDns",
+      title: "links.jeo.dns",
       href: "https://jeodns.com",
     },
   ];
