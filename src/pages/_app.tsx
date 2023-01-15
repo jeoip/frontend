@@ -5,21 +5,16 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import { useRouter } from "next/router";
 import { IntlProvider } from "react-intl"
-import {messages} from '@/lang/translate'
+import {getMessages, getLocale} from '@/lang/translate'
 
 export default function App({ Component, pageProps }: AppProps) {
-
-  let { locale } = useRouter();
-  if (!locale) {
-    locale = "en";
-  }
 
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
   }, []);
 
   return (
-    <IntlProvider locale={locale} messages={messages[locale]}>
+    <IntlProvider locale={getLocale()} messages={getMessages()}>
       <Component {...pageProps}/>
     </IntlProvider>
   );

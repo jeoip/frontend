@@ -1,14 +1,9 @@
 import Footer from "@/components/Footer";
 import IPCard from "@/components/IPCard";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { getDirection } from "@/lang/translate";
 
 export default function Home() {
-  let { locale } = useRouter();
-  if (!locale) {
-    locale = "en";
-  }
 
   return (
     <>
@@ -42,10 +37,10 @@ export default function Home() {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <main dir={getDirection(locale)}>
+      <main dir={getDirection()}>
         <IPCard></IPCard>
       </main>
-      <Footer dir={getDirection(locale)}></Footer>
+      <Footer dir={getDirection()}></Footer>
     </>
   );
 }
