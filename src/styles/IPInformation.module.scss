@@ -1,0 +1,55 @@
+.ip-information {
+  &__title {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--text-light-color);
+  }
+
+  &__ip {
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 300;
+    color: black;
+  }
+
+  &__btn {
+    width: 101px;
+    height: 41px;
+    border-radius: 6px;
+    border: none;
+    outline: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background-color: white;
+    font-weight: bold;
+    font-size: 16px;
+
+    &:active, &:hover, &:focus {
+      outline: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+  }
+
+  &-item {
+
+    &__body {
+      margin-top: -10px;
+    }
+
+    &__title {
+      font-weight: bold;
+      font-size: 14px;
+      color: var(--text-light-color);
+    }
+
+    &__value {
+      font-weight: normal;
+      font-size: 16px;
+      color: #333;
+    }
+
+    &__icon {
+      color: var(--text-light-color);
+    }
+  }
+}

@@ -1,5 +1,5 @@
-import FAQ from "@/components/base/FAQ";
 import Footer from "@/components/Footer";
+import IPInformation from "@/components/ip/IPInformation";
 import Head from "next/head";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <FAQ className="mx-3"/>
+        <IPInformation></IPInformation>
       </main>
       {/* <Footer></Footer> */}
     </>
