@@ -41,7 +41,7 @@ const IPInformationItems: React.FC<Props> = () => {
   ];
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid px-0">
       <div className="row">
         {items.map((item, index) => {
           return (
@@ -65,7 +65,7 @@ const IPInformation: React.FC<Props> = (props) => {
 
   return (
     <div className={props.className}>
-      <p className={`${styles["ip-information__title"]}`}>
+      <p className={`${styles["ip-information__title"]} mb-0`}>
         <FormattedMessage id="ip.informations.title" />
       </p>
       <div className="d-flex flex-row justify-content-between">

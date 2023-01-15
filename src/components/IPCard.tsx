@@ -69,7 +69,7 @@ const IPCard: React.FC<Props> = (props) => {
         {!loading && (
           <>
             <IPInformation />
-            <IPDataTable className="mt-3" />
+            <IPDataTable className="mt-4" />
           </>
         )}
         <FAQ className="mt-3" />
