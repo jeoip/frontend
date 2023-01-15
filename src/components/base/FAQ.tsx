@@ -2,6 +2,7 @@ import Props from "@/types/props/Props";
 import styles from "@/styles/FAQ.module.scss";
 import FAQItem from "./FAQItem";
 import { FormattedMessage } from "react-intl";
+import { getDirection } from "@/lang/translate";
 
 const FAQ: React.FC<Props> = (props) => {
   const items = [
@@ -28,11 +29,13 @@ const FAQ: React.FC<Props> = (props) => {
     },
   ];
 
+  const iconRotation = (getDirection() === 'rtl') ? 'mdi-rotate-315' : 'mdi-rotate-135'
+
   return (
     <div className={props.className}>
       <div className="d-flex flex-row">
         <span
-          className={`${styles["faq__arrow"]} my-auto mdi mdi-rotate-315 mdi-arrow-top-left`}
+          className={`${styles["faq__arrow"]} my-auto mdi ${iconRotation} mdi-arrow-top-left`}
         ></span>
         <p className={`${styles["faq__title"]} my-auto mx-1`}>
           <FormattedMessage id="faq.title"/>
