@@ -63,7 +63,7 @@ const IPCard: React.FC<Props> = (props) => {
 
   return (
     <IPContext.Provider value={state}>
-      <Card className={props.className}>
+      <Card className="px-5">
         <Brand row={true}></Brand>
         {loading && <Spinner className="mx-auto" />}
         {!loading && (
