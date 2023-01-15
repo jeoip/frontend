@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import IPInformation from "@/components/ip/IPInformation";
+import IPDataTable from "@/components/ip/IPDataTable";
 import Head from "next/head";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <IPInformation></IPInformation>
+        <IPDataTable></IPDataTable>
       </main>
       {/* <Footer></Footer> */}
     </>
