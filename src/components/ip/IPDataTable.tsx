@@ -1,17 +1,32 @@
 import Props from "@/types/props/Props";
 import styles from "@/styles/IPDataTable.module.scss";
 import { FormattedMessage } from "react-intl";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import IPContext from "@/store/IPContext";
+import Spinner from "../base/Spinner";
 
 const ipToInt = (ip: string | undefined) => {
   if (ip === undefined) return -1;
   return ip.split(".").map(parseFloat).reduce((int, value) => int * 256 + +value);
 }
 
-const IPDataTable: React.FC<Props> = (props) => {
 
+const IPDataTable: React.FC<Props> = (props) => {
+  
   const ctx = useContext(IPContext)
+  const [userAgent, setUserAgent] = useState('')
+
+  useEffect(() => {
+    setUserAgent(window.navigator.userAgent)
+  }, [])
+  
+  const getUserAgent = () => {
+    return userAgent.substring(0, userAgent.indexOf(' '));
+  }
+  
+  const getUserAgentComment = () => {
+    return userAgent.substring(userAgent.indexOf(' ') + 1);
+  }
 
   return (
     <div className={props.className}>
@@ -42,27 +57,27 @@ const IPDataTable: React.FC<Props> = (props) => {
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.asn"/></th>
-            <th>{ctx?.latitude}</th>
+            <th>{<Spinner className="mx-auto"/>}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.asn.organization"/></th>
-            <th>{ctx?.latitude}</th>
+            <th>{<Spinner className="mx-auto"/>}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.hostname"/></th>
-            <th>{ctx?.latitude}</th>
+            <th>{<Spinner className="mx-auto"/>}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.user.agent"/></th>
-            <th>{ctx?.latitude}</th>
+            <th>{getUserAgent()}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.user.agent.comment"/></th>
-            <th>{ctx?.latitude}</th>
+            <th>{getUserAgentComment()}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.user.agent.raw"/></th>
-            <th>{ctx?.latitude}</th>
+            <th>{userAgent}</th>
           </tr>
         </tbody>
       </table>
