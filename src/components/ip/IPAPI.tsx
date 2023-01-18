@@ -95,7 +95,7 @@ export const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
 export const IPAPIUrl: React.FC<Props> = (props) => {
 
   const ctx = useContext(IPAPIContext)
-  const url = `curl https://jeoip.com/api/${ctx.selected}`
+  const url = (ctx.enteredIP) ? `curl https://jeoip.com/api/${ctx.enteredIP}/${ctx.selected}` : `curl https://jeoip.com/api/${ctx.selected}`
 
   return (
     <div
@@ -130,10 +130,12 @@ export const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
     const blocks = ip.split('.');
     if (!ip) {
       setIPValid(null);
+      props.onEnterIP('')
       return
     }
     if (blocks.length != 4) {
       setIPValid(false);
+      props.onEnterIP('')
       return;
     }
     let valid = true;
@@ -149,9 +151,7 @@ export const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
       }
     }
     setIPValid(valid);
-    if (valid) {
-      props.onEnterIP(ip)
-    }
+    props.onEnterIP(valid ? ip : '')
   }
 
   return (
@@ -178,6 +178,7 @@ export const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 const IPAPI: React.FC<Props> = (props) => {
 
   const [state, setState] = useState({
+    enteredIP: '',
     selected: 'ip'
   })
 
@@ -191,7 +192,12 @@ const IPAPI: React.FC<Props> = (props) => {
   }
 
   const onEnterIPHandler = (value: string) => {
-    console.log(value);
+    setState(prevState => {
+      return {
+        ...prevState,
+        enteredIP: value
+      }
+    })
   }
 
   const iconRotation =
