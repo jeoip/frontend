@@ -69,6 +69,13 @@
       &:focus {
         outline: none;
       }
+
+      &::placeholder {
+        font-size: 13px;
+        font-style: normal;
+        font-weight: normal;
+        color: var(--text-light-color);
+      }
     }
 
     &__submit {

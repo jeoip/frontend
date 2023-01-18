@@ -11,7 +11,7 @@ interface IPAPIItemProps {
 }
 
 interface IPAPIUrlProps {
-  url: string,
+  url: string;
 }
 
 interface IPAPIInputProps {
@@ -19,7 +19,6 @@ interface IPAPIInputProps {
 }
 
 const IPAPIHeader: React.FC<Props> = (props) => {
-
   const iconRotation =
     getDirection() === "rtl" ? "mdi-rotate-315" : "mdi-rotate-135";
 
@@ -37,20 +36,20 @@ const IPAPIHeader: React.FC<Props> = (props) => {
         <FormattedMessage id="ip.api.subtitle" />
       </p>
     </>
-  )
-}
+  );
+};
 
 const IPAPIItem: React.FC<IPAPIItemProps & Props> = (props) => {
-  const ctx = useContext(IPAPIContext)
+  const ctx = useContext(IPAPIContext);
 
   const itemSelectHandler = () => {
-    ctx.onItemSelect(props.value)
-  }
+    ctx.onItemSelect(props.value);
+  };
 
   return (
     <p
       className={`${styles["ip-api-item"]} ${
-        (ctx.item === props.value) ? styles["ip-api-item__selected"] : ""
+        ctx.item === props.value ? styles["ip-api-item__selected"] : ""
       }`}
       onClick={itemSelectHandler}
     >
@@ -60,7 +59,6 @@ const IPAPIItem: React.FC<IPAPIItemProps & Props> = (props) => {
 };
 
 const IPAPIItems: React.FC<Props> = (props) => {
-
   const items = [
     {
       title: "ip.api.items.ip",
@@ -97,11 +95,7 @@ const IPAPIItems: React.FC<Props> = (props) => {
       className={`${props.className} ${styles["ip-api-items"]} d-flex flex-row align-items-center`}
     >
       {items.map((item, index) => (
-        <IPAPIItem
-          title={item.title}
-          value={item.value}
-          key={index}
-        />
+        <IPAPIItem title={item.title} value={item.value} key={index} />
       ))}
     </div>
   );
@@ -113,9 +107,7 @@ const IPAPIUrl: React.FC<IPAPIUrlProps & Props> = (props) => {
       className={`${props.className} ${styles["ip-api-url__container"]} d-flex flex-row align-items-center`}
     >
       <span className="mdi mdi-currency-usd"></span>
-      <span className={`${styles["ip-api-url__value"]} mx-2`}>
-        {props.url}
-      </span>
+      <span className={`${styles["ip-api-url__value"]} mx-2`}>{props.url}</span>
     </div>
   );
 };
@@ -133,20 +125,19 @@ const IPAPIResult: React.FC<Props> = (props) => {
 };
 
 const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
-
   const [ipValid, setIPValid] = useState(null as null | boolean);
 
   const validateIPaddress = (event: React.ChangeEvent<HTMLInputElement>) => {
     const ip = event.target.value;
-    const blocks = ip.split('.');
+    const blocks = ip.split(".");
     if (!ip) {
       setIPValid(null);
-      props.onEnterIP('')
-      return
+      props.onEnterIP("");
+      return;
     }
     if (blocks.length != 4) {
       setIPValid(false);
-      props.onEnterIP('')
+      props.onEnterIP("");
       return;
     }
     let valid = true;
@@ -162,8 +153,8 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
       }
     }
     setIPValid(valid);
-    props.onEnterIP(valid ? ip : '')
-  }
+    props.onEnterIP(valid ? ip : "");
+  };
 
   return (
     <div
@@ -173,11 +164,20 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
         <FormattedMessage id="ip.api.input.title" />
       </p>
       <div>
-        <input
-          type="text"
-          className={`${styles["ip-api-input__input"]} ${((typeof ipValid == "boolean" && !ipValid) ? styles["ip-api-input__input-invalid"] : '')} mx-3`}
-          onInput={validateIPaddress}
-        />
+        <FormattedMessage id="ip.api.input.placeholder">
+          {(placeholder) => (
+            <input
+              type="text"
+              placeholder={placeholder.toString()}
+              className={`${styles["ip-api-input__input"]} ${
+                typeof ipValid == "boolean" && !ipValid
+                  ? styles["ip-api-input__input-invalid"]
+                  : ""
+              } mx-3`}
+              onInput={validateIPaddress}
+            />
+          )}
+        </FormattedMessage>
         <button className={`${styles["ip-api-input__submit"]} btn`}>
           <FormattedMessage id="ip.api.input.check" />
         </button>
@@ -187,30 +187,33 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 };
 
 const IPAPI: React.FC<Props> = (props) => {
-
-  const [enteredIP, setEnteredIP] = useState('');
-  const [selectedItem, setSelectedItem] = useState('ip');
+  const [enteredIP, setEnteredIP] = useState("");
+  const [selectedItem, setSelectedItem] = useState("ip");
 
   const onItemSelectHandler = (value: string) => {
-    setSelectedItem(value)
-  }
+    setSelectedItem(value);
+  };
 
   const onEnterIPHandler = (ip: string) => {
-    setEnteredIP(ip)
-  }
+    setEnteredIP(ip);
+  };
 
-  const url = (enteredIP) ? `curl https://jeoip.com/api/${enteredIP}/${selectedItem}` : `curl https://jeoip.com/api/${selectedItem}`
+  const url = enteredIP
+    ? `curl https://jeoip.com/api/${enteredIP}/${selectedItem}`
+    : `curl https://jeoip.com/api/${selectedItem}`;
 
   return (
-    <IPAPIContext.Provider value={{
-      ip: enteredIP,
-      item: selectedItem,
-      onItemSelect: onItemSelectHandler
-    }}>
+    <IPAPIContext.Provider
+      value={{
+        ip: enteredIP,
+        item: selectedItem,
+        onItemSelect: onItemSelectHandler,
+      }}
+    >
       <div className={`${props.className}`}>
         <IPAPIHeader />
         <IPAPIItems />
-        <IPAPIUrl url={url}/>
+        <IPAPIUrl url={url} />
         <IPAPIResult className="mt-3" />
         <IPAPIInput onEnterIP={onEnterIPHandler} className="mt-3" />
       </div>
