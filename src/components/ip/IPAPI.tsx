@@ -2,7 +2,7 @@ import Props from "@/types/props/Props";
 import { FormattedMessage } from "react-intl";
 import styles from "@/styles/IPAPI.module.scss";
 import { getDirection } from "@/lang/translate";
-import { useContext, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import IPAPIContext from "@/store/IPAPIContext";
 
 interface IPAPIItemProps {
@@ -91,6 +91,7 @@ export const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
 export const IPAPIUrl: React.FC<Props> = (props) => {
 
   const ctx = useContext(IPAPIContext)
+  const url = `curl https://jeoip.com/api/${ctx.selected}`
 
   return (
     <div
@@ -98,7 +99,7 @@ export const IPAPIUrl: React.FC<Props> = (props) => {
     >
       <span className="mdi mdi-currency-usd"></span>
       <span className={`${styles["ip-api-url__value"]} mx-2`}>
-        {`curl https://jeoip.com/api/${ctx.selected}`}
+        {url}
       </span>
     </div>
   );
@@ -117,9 +118,38 @@ export const IPAPIResult: React.FC<Props> = (props) => {
 };
 
 export const IPAPIInput: React.FC<Props> = (props) => {
+
+  const [ipValid, setIPValid] = useState(null as null | boolean);
+
+  const validateIPaddress = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const IP = event.target.value;
+    const blocks = IP.split('.');
+    if (!IP) {
+      setIPValid(null);
+      return
+    }
+    if (blocks.length != 4) {
+      setIPValid(false);
+      return;
+    }
+    let valid = true;
+    for (let block of blocks) {
+      if (!block) {
+        valid = false;
+        break;
+      }
+      let number = parseInt(block);
+      if (number < 0 || number > 255) {
+        valid = false;
+        break;
+      }
+    }
+    setIPValid(valid);
+  }
+
   return (
     <div
-      className={`${props.className} d-flex flex-row align-items-center justify-content-between`}
+      className={`${props.className} d-flex flex-row justify-content-between`}
     >
       <p className={`${styles["ip-api-input__title"]} my-auto`}>
         <FormattedMessage id="ip.api.input.title" />
@@ -127,7 +157,8 @@ export const IPAPIInput: React.FC<Props> = (props) => {
       <div>
         <input
           type="text"
-          className={`${styles["ip-api-input__input"]} mx-3`}
+          className={`${styles["ip-api-input__input"]} ${((typeof ipValid == "boolean" && !ipValid) ? styles["ip-api-input__input-invalid"] : '')} mx-3`}
+          onInput={validateIPaddress}
         />
         <button className={`${styles["ip-api-input__submit"]} btn`}>
           <FormattedMessage id="ip.api.input.check" />

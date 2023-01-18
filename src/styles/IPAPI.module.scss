@@ -61,6 +61,11 @@
       border: 1px solid #ccc;
       padding: 0.3rem 0.5rem;
 
+      &-invalid {
+        border: 1px solid red;
+        background-color: rgba($color: red, $alpha: 0.1);
+      }
+
       &:focus {
         outline: none;
       }
