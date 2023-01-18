@@ -20,16 +20,15 @@ const Brand = (props: React.PropsWithChildren<Props & BrandProp>) => {
         />
       )}
       <div className="d-flex flex-row justify-content-center">
-        <p className={`${styles["brand__title"]} my-auto mx-1`}>JeoIP</p>
         {props.row && (
           <Image
-            className="my-auto"
             src="/jeo.svg"
             width={iconSize}
             height={iconSize}
             alt="jeoip"
           />
         )}
+        <p className={`${styles["brand__title"]} my-auto mx-1`}>JeoIP</p>
       </div>
       <p className={`${styles["brand__subtitle"]} mt-1`}>
         <FormattedMessage id="brand.subtitle"/>
