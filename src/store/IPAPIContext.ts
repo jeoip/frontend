@@ -4,6 +4,8 @@ export interface IPAPIContextType {
   selected: string;
 }
 
-const IPAPIContext = createContext<IPAPIContextType | null>(null);
+const IPAPIContext = createContext<IPAPIContextType>({
+  selected: ''
+});
 
 export default IPAPIContext;

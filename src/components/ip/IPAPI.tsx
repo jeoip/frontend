@@ -26,7 +26,7 @@ export const IPAPIItem: React.FC<Props & IPAPIItemProps> = (props) => {
   return (
     <p
       className={`${styles["ip-api-item"]} ${
-        (ctx?.selected === props.value) ? styles["ip-api-item__selected"] : ""
+        (ctx.selected === props.value) ? styles["ip-api-item__selected"] : ""
       }`}
       onClick={onItemSelectHandler}
     >
@@ -98,7 +98,7 @@ export const IPAPIUrl: React.FC<Props> = (props) => {
     >
       <span className="mdi mdi-currency-usd"></span>
       <span className={`${styles["ip-api-url__value"]} mx-2`}>
-        {`curl jeoip.com/api/${ctx?.selected}`}
+        {`curl https://jeoip.com/api/${ctx.selected}`}
       </span>
     </div>
   );
@@ -143,11 +143,11 @@ const IPAPI: React.FC<Props> = (props) => {
     selected: 'ip'
   })
 
-  const onItemSelectHandler = (item: string) => {
+  const onItemSelectHandler = (value: string) => {
     setState(prevState => {
       return {
         ...prevState,
-        selected: item
+        selected: value
       }
     })
   }
