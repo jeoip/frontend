@@ -25,5 +25,17 @@
   "links.dnj.holding": "هلدینگ داده نگار جی",
   "links.jey.server": "جی سرور",
   "links.web.shot": "وب شات",
-  "links.jeo.dns": "JeoDns"
+  "links.jeo.dns": "JeoDns",
+  "ip.api.title": "از API ما اینگونه استفاده کنید!",
+  "ip.api.subtitle": "از طریق گزینه های زیر می توانید نحوه استفاده از هر مورد و نتیجه آن را مشاهده نمایید:",
+  "ip.api.items.ip": "آی پی",
+  "ip.api.items.location": "لوکیشن",
+  "ip.api.items.country.iso": "country iso",
+  "ip.api.items.city": "شهر",
+  "ip.api.items.asn": "asn",
+  "ip.api.items.json": "json",
+  "ip.api.items.port": "port",
+  "ip.api.input.title": "بررسی آی پی دیگر (اختیاری)",
+  "ip.api.input.check": "بررسی",
+  "ip.api.input.placeholder": "آی پی مورد نظر"
 }

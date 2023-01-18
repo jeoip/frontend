@@ -25,5 +25,17 @@
   "links.dnj.holding": "DJN Holding",
   "links.jey.server": "Jey Server",
   "links.web.shot": "WebShot",
-  "links.jeo.dns": "JeoDNS"
+  "links.jeo.dns": "JeoDNS",
+  "ip.api.title": "How to use our API!",
+  "ip.api.subtitle": "Through the following options, you can see how to use each item and its result:",
+  "ip.api.items.ip": "IP",
+  "ip.api.items.location": "Location",
+  "ip.api.items.country.iso": "Country iso",
+  "ip.api.items.city": "City",
+  "ip.api.items.asn": "ASN",
+  "ip.api.items.json": "JSON",
+  "ip.api.items.port": "Port",
+  "ip.api.input.title": "Check IP (Optional)",
+  "ip.api.input.check": "Check",
+  "ip.api.input.placeholder": "Your IP"
 }

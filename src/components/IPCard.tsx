@@ -6,6 +6,7 @@ import Brand from "./base/Brand";
 import Card from "./base/Card";
 import FAQ from "./base/FAQ";
 import Spinner from "./base/Spinner";
+import IPAPI from "./ip/IPAPI";
 import IPDataTable from "./ip/IPDataTable";
 import IPInformation from "./ip/IPInformation";
 
@@ -72,7 +73,8 @@ const IPCard: React.FC<Props> = (props) => {
             <IPDataTable className="mt-4" />
           </>
         )}
-        <FAQ className="mt-3" />
+        <IPAPI className="mt-5"/>
+        <FAQ className="mt-5" />
       </Card>
     </IPContext.Provider>
   );
