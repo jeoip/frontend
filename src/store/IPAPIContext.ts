@@ -1,13 +1,15 @@
 import { createContext } from "react";
 
 export interface IPAPIContextType {
-  enteredIP: string;
-  selected: string;
+  ip: string;
+  item: string;
+  onItemSelect: Function;
 }
 
 const IPAPIContext = createContext<IPAPIContextType>({
-  enteredIP: '',
-  selected: ''
+  ip: '',
+  item: '',
+  onItemSelect: () => {}
 });
 
 export default IPAPIContext;

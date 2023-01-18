@@ -8,11 +8,10 @@ import IPAPIContext from "@/store/IPAPIContext";
 interface IPAPIItemProps {
   title: string;
   value: string;
-  onSelect: Function;
 }
 
-interface IPAPIItemsProps {
-  onSelect: Function;
+interface IPAPIUrlProps {
+  url: string,
 }
 
 interface IPAPIInputProps {
@@ -41,27 +40,26 @@ const IPAPIHeader: React.FC<Props> = (props) => {
   )
 }
 
-const IPAPIItem: React.FC<Props & IPAPIItemProps> = (props) => {
-
+const IPAPIItem: React.FC<IPAPIItemProps & Props> = (props) => {
   const ctx = useContext(IPAPIContext)
 
-  const onItemSelectHandler = () => {
-    props.onSelect(props.value);
-  };
+  const itemSelectHandler = () => {
+    ctx.onItemSelect(props.value)
+  }
 
   return (
     <p
       className={`${styles["ip-api-item"]} ${
-        (ctx.selected === props.value) ? styles["ip-api-item__selected"] : ""
+        (ctx.item === props.value) ? styles["ip-api-item__selected"] : ""
       }`}
-      onClick={onItemSelectHandler}
+      onClick={itemSelectHandler}
     >
       <FormattedMessage id={props.title} />
     </p>
   );
 };
 
-const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
+const IPAPIItems: React.FC<Props> = (props) => {
 
   const items = [
     {
@@ -94,10 +92,6 @@ const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
     },
   ];
 
-  const onItemSelectHandler = (item: string) => {
-    props.onSelect(item)
-  }
-
   return (
     <div
       className={`${props.className} ${styles["ip-api-items"]} d-flex flex-row align-items-center`}
@@ -106,7 +100,6 @@ const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
         <IPAPIItem
           title={item.title}
           value={item.value}
-          onSelect={onItemSelectHandler}
           key={index}
         />
       ))}
@@ -114,18 +107,14 @@ const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
   );
 };
 
-const IPAPIUrl: React.FC<Props> = (props) => {
-
-  const ctx = useContext(IPAPIContext)
-  const url = (ctx.enteredIP) ? `curl https://jeoip.com/api/${ctx.enteredIP}/${ctx.selected}` : `curl https://jeoip.com/api/${ctx.selected}`
-
+const IPAPIUrl: React.FC<IPAPIUrlProps & Props> = (props) => {
   return (
     <div
       className={`${props.className} ${styles["ip-api-url__container"]} d-flex flex-row align-items-center`}
     >
       <span className="mdi mdi-currency-usd"></span>
       <span className={`${styles["ip-api-url__value"]} mx-2`}>
-        {url}
+        {props.url}
       </span>
     </div>
   );
@@ -199,35 +188,29 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 
 const IPAPI: React.FC<Props> = (props) => {
 
-  const [state, setState] = useState({
-    enteredIP: '',
-    selected: 'ip'
-  })
+  const [enteredIP, setEnteredIP] = useState('');
+  const [selectedItem, setSelectedItem] = useState('ip');
 
   const onItemSelectHandler = (value: string) => {
-    setState(prevState => {
-      return {
-        ...prevState,
-        selected: value
-      }
-    })
+    setSelectedItem(value)
   }
 
-  const onEnterIPHandler = (value: string) => {
-    setState(prevState => {
-      return {
-        ...prevState,
-        enteredIP: value
-      }
-    })
+  const onEnterIPHandler = (ip: string) => {
+    setEnteredIP(ip)
   }
+
+  const url = (enteredIP) ? `curl https://jeoip.com/api/${enteredIP}/${selectedItem}` : `curl https://jeoip.com/api/${selectedItem}`
 
   return (
-    <IPAPIContext.Provider value={state}>
+    <IPAPIContext.Provider value={{
+      ip: enteredIP,
+      item: selectedItem,
+      onItemSelect: onItemSelectHandler
+    }}>
       <div className={`${props.className}`}>
         <IPAPIHeader />
-        <IPAPIItems onSelect={onItemSelectHandler}/>
-        <IPAPIUrl />
+        <IPAPIItems />
+        <IPAPIUrl url={url}/>
         <IPAPIResult className="mt-3" />
         <IPAPIInput onEnterIP={onEnterIPHandler} className="mt-3" />
       </div>
