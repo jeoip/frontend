@@ -129,7 +129,7 @@ export const IPAPIInput: React.FC<Props> = (props) => {
           type="text"
           className={`${styles["ip-api-input__input"]} mx-3`}
         />
-        <button className={`${styles["ip-api-input__submit"]}`}>
+        <button className={`${styles["ip-api-input__submit"]} btn`}>
           <FormattedMessage id="ip.api.input.check" />
         </button>
       </div>
