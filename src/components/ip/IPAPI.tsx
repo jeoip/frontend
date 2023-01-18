@@ -178,7 +178,8 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
             />
           )}
         </FormattedMessage>
-        <button className={`${styles["ip-api-input__submit"]} btn`}>
+        <button type="button" className={`${styles["ip-api-input__submit"]} btn`}>
+          <span className="spinner-border spinner-border-sm mt-1 mx-1 visually-hidden" role="status" aria-hidden="true"></span>
           <FormattedMessage id="ip.api.input.check" />
         </button>
       </div>
