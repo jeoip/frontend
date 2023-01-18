@@ -19,7 +19,29 @@ interface IPAPIInputProps {
   onEnterIP: Function;
 }
 
-export const IPAPIItem: React.FC<Props & IPAPIItemProps> = (props) => {
+const IPAPIHeader: React.FC<Props> = (props) => {
+
+  const iconRotation =
+    getDirection() === "rtl" ? "mdi-rotate-315" : "mdi-rotate-135";
+
+  return (
+    <>
+      <div className="d-flex flex-row">
+        <span
+          className={`${styles["ip-api__arrow"]} my-auto mdi ${iconRotation} mdi-arrow-top-left`}
+        ></span>
+        <p className={`${styles["ip-api__title"]} my-auto mx-1`}>
+          <FormattedMessage id="ip.api.title" />
+        </p>
+      </div>
+      <p className={`${styles["ip-api__subtitle"]}`}>
+        <FormattedMessage id="ip.api.subtitle" />
+      </p>
+    </>
+  )
+}
+
+const IPAPIItem: React.FC<Props & IPAPIItemProps> = (props) => {
 
   const ctx = useContext(IPAPIContext)
 
@@ -39,7 +61,7 @@ export const IPAPIItem: React.FC<Props & IPAPIItemProps> = (props) => {
   );
 };
 
-export const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
+const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
 
   const items = [
     {
@@ -92,7 +114,7 @@ export const IPAPIItems: React.FC<IPAPIItemsProps & Props> = (props) => {
   );
 };
 
-export const IPAPIUrl: React.FC<Props> = (props) => {
+const IPAPIUrl: React.FC<Props> = (props) => {
 
   const ctx = useContext(IPAPIContext)
   const url = (ctx.enteredIP) ? `curl https://jeoip.com/api/${ctx.enteredIP}/${ctx.selected}` : `curl https://jeoip.com/api/${ctx.selected}`
@@ -109,7 +131,7 @@ export const IPAPIUrl: React.FC<Props> = (props) => {
   );
 };
 
-export const IPAPIResult: React.FC<Props> = (props) => {
+const IPAPIResult: React.FC<Props> = (props) => {
   return (
     <div
       className={`${props.className} ${styles["ip-api-result__container"]} d-flex flex-row align-items-center`}
@@ -121,7 +143,7 @@ export const IPAPIResult: React.FC<Props> = (props) => {
   );
 };
 
-export const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
+const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 
   const [ipValid, setIPValid] = useState(null as null | boolean);
 
@@ -200,23 +222,10 @@ const IPAPI: React.FC<Props> = (props) => {
     })
   }
 
-  const iconRotation =
-    getDirection() === "rtl" ? "mdi-rotate-315" : "mdi-rotate-135";
-
   return (
     <IPAPIContext.Provider value={state}>
       <div className={`${props.className}`}>
-        <div className="d-flex flex-row">
-          <span
-            className={`${styles["ip-api__arrow"]} my-auto mdi ${iconRotation} mdi-arrow-top-left`}
-          ></span>
-          <p className={`${styles["ip-api__title"]} my-auto mx-1`}>
-            <FormattedMessage id="ip.api.title" />
-          </p>
-        </div>
-        <p className={`${styles["ip-api__subtitle"]}`}>
-          <FormattedMessage id="ip.api.subtitle" />
-        </p>
+        <IPAPIHeader />
         <IPAPIItems onSelect={onItemSelectHandler}/>
         <IPAPIUrl />
         <IPAPIResult className="mt-3" />
