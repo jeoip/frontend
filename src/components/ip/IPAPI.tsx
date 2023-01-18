@@ -15,6 +15,10 @@ interface IPAPIItemsProps {
   onSelect: Function;
 }
 
+interface IPAPIInputProps {
+  onEnterIP: Function;
+}
+
 export const IPAPIItem: React.FC<Props & IPAPIItemProps> = (props) => {
 
   const ctx = useContext(IPAPIContext)
@@ -117,14 +121,14 @@ export const IPAPIResult: React.FC<Props> = (props) => {
   );
 };
 
-export const IPAPIInput: React.FC<Props> = (props) => {
+export const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 
   const [ipValid, setIPValid] = useState(null as null | boolean);
 
   const validateIPaddress = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const IP = event.target.value;
-    const blocks = IP.split('.');
-    if (!IP) {
+    const ip = event.target.value;
+    const blocks = ip.split('.');
+    if (!ip) {
       setIPValid(null);
       return
     }
@@ -145,6 +149,9 @@ export const IPAPIInput: React.FC<Props> = (props) => {
       }
     }
     setIPValid(valid);
+    if (valid) {
+      props.onEnterIP(ip)
+    }
   }
 
   return (
@@ -183,6 +190,10 @@ const IPAPI: React.FC<Props> = (props) => {
     })
   }
 
+  const onEnterIPHandler = (value: string) => {
+    console.log(value);
+  }
+
   const iconRotation =
     getDirection() === "rtl" ? "mdi-rotate-315" : "mdi-rotate-135";
 
@@ -203,7 +214,7 @@ const IPAPI: React.FC<Props> = (props) => {
         <IPAPIItems onSelect={onItemSelectHandler}/>
         <IPAPIUrl />
         <IPAPIResult className="mt-3" />
-        <IPAPIInput className="mt-3" />
+        <IPAPIInput onEnterIP={onEnterIPHandler} className="mt-3" />
       </div>
     </IPAPIContext.Provider>
   );
