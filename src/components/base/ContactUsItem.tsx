@@ -1,8 +1,14 @@
-import ContactUsItemProps from "@/types/props/ContactUsItemProps";
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import styles from "../../styles/ContactUsItem.module.scss";
+
+export interface ContactUsItemProps {
+  title: string,
+  value: string,
+  href: string,
+  icon: string,
+}
 
 const ContactUsItem: React.FC<Props & ContactUsItemProps> = (props) => {
   return (

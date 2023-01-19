@@ -1,5 +1,5 @@
 import IPContext, { IPContextType } from "@/store/IPContext";
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Brand from "./base/Brand";

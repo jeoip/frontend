@@ -1,4 +1,4 @@
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import styles from "@/styles/Spinner.module.scss";
 
 const Spinner: React.FC<Props> = (props) => {

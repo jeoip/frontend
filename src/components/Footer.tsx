@@ -3,7 +3,7 @@ import ContactUs from "./base/ContactUs";
 import Links from "./base/Links";
 
 import styles from "../styles/Footer.module.scss";
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 
 const Footer: React.FC<Props> = (props) => {
 

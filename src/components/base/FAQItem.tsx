@@ -1,6 +1,10 @@
-import FAQItemProps from "@/types/props/FAQItemProps";
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import styles from '@/styles/FAQItem.module.scss'
+
+export interface FAQItemProps {
+  question: string,
+  answer: string
+}
 
 const FAQItem: React.FC<Props & FAQItemProps> = (props) => {
   return (

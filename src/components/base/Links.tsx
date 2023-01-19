@@ -1,7 +1,7 @@
 import Link from './Link';
 import styles from '../../styles/Links.module.scss'
 import React from 'react';
-import Props from '@/types/props/Props';
+import Props from '@/types/Props';
 import { FormattedMessage } from 'react-intl';
 
 const Links: React.FC<Props> = (props) => {

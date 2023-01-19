@@ -1,4 +1,4 @@
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import styles from "@/styles/IPDataTable.module.scss";
 import { FormattedMessage } from "react-intl";
 import { useContext, useEffect, useState } from "react";

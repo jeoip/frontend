@@ -1,9 +1,14 @@
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import styles from "@/styles/IPInformation.module.scss";
-import IPInformationItemProps from "@/types/props/IPInformationItemProps";
 import { FormattedMessage } from "react-intl";
 import { useContext } from "react";
 import IPContext from "@/store/IPContext";
+
+export interface IPInformationItemProps {
+  title: string,
+  value?: string,
+  icon?: string,
+}
 
 const IPInformationItem: React.FC<Props & IPInformationItemProps> = (props) => {
   return (

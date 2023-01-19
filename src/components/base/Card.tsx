@@ -1,4 +1,4 @@
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import React from "react";
 import styles from "@/styles/Card.module.scss";
 

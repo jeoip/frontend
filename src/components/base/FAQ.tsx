@@ -1,4 +1,4 @@
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import styles from "@/styles/FAQ.module.scss";
 import FAQItem from "./FAQItem";
 import { FormattedMessage } from "react-intl";

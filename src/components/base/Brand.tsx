@@ -1,9 +1,13 @@
-import BrandProp from "@/types/props/BrandProps";
-import Props from "@/types/props/Props";
+import Props from "@/types/Props";
 import Image from "next/image";
 import React from "react";
 import styles from "../../styles/Brand.module.scss";
 import { FormattedMessage } from "react-intl";
+
+export interface BrandProp {
+  iconSize?: number,
+  row: boolean,
+}
 
 const Brand = (props: React.PropsWithChildren<Props & BrandProp>) => {
 
