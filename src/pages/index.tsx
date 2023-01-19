@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import IPCard from "@/components/IPCard";
 import Head from "next/head";
-import { getDirection } from "@/lang/translate";
+import { getDirection } from "@/lang/locale";
 
 export default function Home() {
 

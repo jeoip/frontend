@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import { useRouter } from "next/router";
 import { IntlProvider } from "react-intl"
-import {getMessages, getLocale} from '@/lang/translate'
+import {getMessages, getLocale} from '@/lang/locale'
 
 export default function App({ Component, pageProps }: AppProps) {
 

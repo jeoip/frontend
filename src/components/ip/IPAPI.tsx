@@ -1,7 +1,7 @@
 import Props from "@/types/Props";
 import { FormattedMessage } from "react-intl";
 import styles from "@/styles/IPAPI.module.scss";
-import { getDirection } from "@/lang/translate";
+import { getDirection } from "@/lang/locale";
 import { useContext, useState } from "react";
 import IPAPIContext from "@/store/IPAPIContext";
 import axios from "axios";

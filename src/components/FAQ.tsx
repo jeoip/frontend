@@ -1,7 +1,7 @@
 import Props from "@/types/Props";
 import styles from "@/styles/FAQ.module.scss";
 import { FormattedMessage } from "react-intl";
-import { getDirection } from "@/lang/translate";
+import { getDirection } from "@/lang/locale";
 
 export interface FAQItemProps {
   question: string,

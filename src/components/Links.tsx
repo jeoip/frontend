@@ -2,7 +2,7 @@ import styles from '@/styles/Links.module.scss'
 import React from 'react';
 import Props from '@/types/Props';
 import { FormattedMessage } from 'react-intl';
-import { getDirection } from '@/lang/translate';
+import { getDirection } from '@/lang/locale';
 
 export interface LinkProps {
   title: string,
