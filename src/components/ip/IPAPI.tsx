@@ -16,6 +16,7 @@ interface IPAPIUrlProps {
 
 interface IPAPIInputProps {
   onEnterIP: Function;
+  onSubmit: Function;
 }
 
 const IPAPIHeader: React.FC<Props> = (props) => {
@@ -102,12 +103,15 @@ const IPAPIItems: React.FC<Props> = (props) => {
 };
 
 const IPAPIUrl: React.FC<IPAPIUrlProps & Props> = (props) => {
+
+  const value = `curl ${props.url}`
+
   return (
     <div
       className={`${props.className} ${styles["ip-api-url__container"]} d-flex flex-row align-items-center`}
     >
       <span className="mdi mdi-currency-usd"></span>
-      <span className={`${styles["ip-api-url__value"]} mx-2`}>{props.url}</span>
+      <span className={`${styles["ip-api-url__value"]} mx-2`}>{value}</span>
     </div>
   );
 };
@@ -156,6 +160,12 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
     props.onEnterIP(valid ? ip : "");
   };
 
+  const submitHandler = () => {
+    if (ipValid) {
+      props.onSubmit()
+    }
+  }
+
   return (
     <div
       className={`${props.className} d-flex flex-row justify-content-between`}
@@ -178,7 +188,7 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
             />
           )}
         </FormattedMessage>
-        <button type="button" className={`${styles["ip-api-input__submit"]} btn`}>
+        <button type="button" className={`${styles["ip-api-input__submit"]} btn`} onClick={submitHandler}>
           <span className="spinner-border spinner-border-sm mt-1 mx-1 visually-hidden" role="status" aria-hidden="true"></span>
           <FormattedMessage id="ip.api.input.check" />
         </button>
@@ -200,9 +210,13 @@ const IPAPI: React.FC<Props> = (props) => {
   };
 
   const url = enteredIP
-    ? `curl https://jeoip.com/api/${enteredIP}/${selectedItem}`
-    : `curl https://jeoip.com/api/${selectedItem}`;
+    ? `https://jeoip.com/api/${enteredIP}/${selectedItem}`
+    : `https://jeoip.com/api/${selectedItem}`;
 
+  const submitHandler = () => {
+    console.log(url);
+  }
+  
   return (
     <IPAPIContext.Provider
       value={{
@@ -216,7 +230,7 @@ const IPAPI: React.FC<Props> = (props) => {
         <IPAPIItems />
         <IPAPIUrl url={url} />
         <IPAPIResult className="mt-3" />
-        <IPAPIInput onEnterIP={onEnterIPHandler} className="mt-3" />
+        <IPAPIInput onEnterIP={onEnterIPHandler} onSubmit={submitHandler} className="mt-3" />
       </div>
     </IPAPIContext.Provider>
   );
