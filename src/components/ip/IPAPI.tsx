@@ -15,6 +15,10 @@ interface IPAPIUrlProps {
   url: string;
 }
 
+interface IPAPIResultProps {
+  value: string;
+}
+
 interface IPAPIInputProps {
   loading: boolean;
   onEnterIP: Function;
@@ -118,13 +122,13 @@ const IPAPIUrl: React.FC<IPAPIUrlProps & Props> = (props) => {
   );
 };
 
-const IPAPIResult: React.FC<Props> = (props) => {
+const IPAPIResult: React.FC<IPAPIResultProps & Props> = (props) => {
   return (
     <div
       className={`${props.className} ${styles["ip-api-result__container"]} d-flex flex-row align-items-center`}
     >
       <span className={`${styles["ip-api-result__value"]} mx-1`}>
-        curl jeoip.com/api
+        {props.value}
       </span>
     </div>
   );
@@ -240,7 +244,7 @@ const IPAPI: React.FC<Props> = (props) => {
         <IPAPIHeader />
         <IPAPIItems />
         <IPAPIUrl url={url} />
-        <IPAPIResult className="mt-3" />
+        <IPAPIResult value="FA" className="mt-3" />
         <IPAPIInput loading={loading} onEnterIP={onEnterIPHandler} onSubmit={submitHandler} className="mt-3" />
       </div>
     </IPAPIContext.Provider>
