@@ -15,16 +15,8 @@ const Brand = (props: React.PropsWithChildren<Props & BrandProp>) => {
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
-      {!props.row && (
-        <Image
-          src="/jeo.svg"
-          width={iconSize}
-          height={iconSize}
-          alt="jeoip"
-        />
-      )}
-      <div className="d-flex flex-row justify-content-center">
-        {props.row && (
+      <a href="https://jeoip.ir/" target="_blank" className={`${styles["brand__link"]}`}>
+        {!props.row && (
           <Image
             src="/jeo.svg"
             width={iconSize}
@@ -32,8 +24,18 @@ const Brand = (props: React.PropsWithChildren<Props & BrandProp>) => {
             alt="jeoip"
           />
         )}
-        <p className={`${styles["brand__title"]} my-auto mx-1`}>JeoIP</p>
-      </div>
+        <div className="d-flex flex-row justify-content-center">
+          {props.row && (
+            <Image
+              src="/jeo.svg"
+              width={iconSize}
+              height={iconSize}
+              alt="jeoip"
+            />
+          )}
+          <p className={`${styles["brand__title"]} my-auto mx-1`}>JeoIP</p>
+        </div>
+      </a>
       <p className={`${styles["brand__subtitle"]} mt-1`}>
         <FormattedMessage id="brand.subtitle"/>
       </p>

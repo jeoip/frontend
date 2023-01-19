@@ -1,4 +1,9 @@
 .brand {
+
+  &__link {
+    text-decoration: none;
+  }
+
   &__title {
     font-size: 28px;
     font-weight: bold;
