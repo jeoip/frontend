@@ -7,6 +7,10 @@ export interface IPContextType {
   country: string,
   latitude: number,
   longitude: number,
+  asn: string,
+  asn_org: string,
+  hostname: string,
+  user_agent: string,
 }
 
 const IPContext = createContext<IPContextType | null>(null);

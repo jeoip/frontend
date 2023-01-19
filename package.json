@@ -16,11 +16,17 @@
     "@types/react-dom": "18.0.10",
     "axios": "^1.2.2",
     "bootstrap": "^5.2.3",
+    "leaflet": "^1.9.3",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intl": "^6.2.5",
+    "react-leaflet": "^4.2.0",
     "sass": "^1.57.1",
     "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.6",
+    "@types/leaflet": "^1.9.0"
   }
 }

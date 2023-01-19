@@ -19,6 +19,10 @@ const IPCard: React.FC<Props> = (props) => {
     country: "",
     latitude: -1,
     longitude: -1,
+    asn: '',
+    asn_org: '',
+    hostname: '',
+    user_agent: ''
   });
 
   const getIP = async () => {
@@ -46,6 +50,10 @@ const IPCard: React.FC<Props> = (props) => {
           country: ipInformation.data.country,
           latitude: ipInformation.data.latitude,
           longitude: ipInformation.data.longitude,
+          asn: ipInformation.data.asn,
+          asn_org: ipInformation.data.asn_org,
+          hostname: ipInformation.data.hostname,
+          user_agent: ipInformation.data.user_agent
         };
       });
     } catch (error) {

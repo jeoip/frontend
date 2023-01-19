@@ -57,15 +57,15 @@ const IPDataTable: React.FC<Props> = (props) => {
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.asn"/></th>
-            <th>{<Spinner className="mx-auto"/>}</th>
+            <th>{ctx?.asn}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.asn.organization"/></th>
-            <th>{<Spinner className="mx-auto"/>}</th>
+            <th>{ctx?.asn_org}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.hostname"/></th>
-            <th>{<Spinner className="mx-auto"/>}</th>
+            <th>{ctx?.hostname}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.user.agent"/></th>

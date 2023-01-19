@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import IPCard from "@/components/IPCard";
 import Head from "next/head";
 import { getDirection } from "@/lang/locale";
+import Map from "@/components/Map";
 
 export default function Home() {
 
@@ -38,6 +39,7 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <main dir={getDirection()}>
+        {/* <Map /> */}
         <IPCard/>
       </main>
       <Footer dir={getDirection()}></Footer>
