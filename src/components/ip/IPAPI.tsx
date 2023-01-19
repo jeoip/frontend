@@ -4,6 +4,7 @@ import styles from "@/styles/IPAPI.module.scss";
 import { getDirection } from "@/lang/translate";
 import { FormEvent, useContext, useState } from "react";
 import IPAPIContext from "@/store/IPAPIContext";
+import axios from "axios";
 
 interface IPAPIItemProps {
   title: string;
@@ -15,6 +16,7 @@ interface IPAPIUrlProps {
 }
 
 interface IPAPIInputProps {
+  loading: boolean;
   onEnterIP: Function;
   onSubmit: Function;
 }
@@ -188,9 +190,9 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
             />
           )}
         </FormattedMessage>
-        <button type="button" className={`${styles["ip-api-input__submit"]} btn`} onClick={submitHandler}>
-          <span className="spinner-border spinner-border-sm mt-1 mx-1 visually-hidden" role="status" aria-hidden="true"></span>
-          <FormattedMessage id="ip.api.input.check" />
+        <button type="button" disabled={props.loading} className={`${styles["ip-api-input__submit"]} btn`} onClick={submitHandler}>
+          {props.loading && <span className="spinner-border spinner-border-sm mt-1 mx-1" role="status" aria-hidden="true"></span>}
+          {!props.loading && <FormattedMessage id="ip.api.input.check" />}
         </button>
       </div>
     </div>
@@ -198,6 +200,7 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 };
 
 const IPAPI: React.FC<Props> = (props) => {
+  const [loading, setLoading] = useState(false)
   const [enteredIP, setEnteredIP] = useState("");
   const [selectedItem, setSelectedItem] = useState("ip");
 
@@ -213,8 +216,16 @@ const IPAPI: React.FC<Props> = (props) => {
     ? `https://jeoip.com/api/${enteredIP}/${selectedItem}`
     : `https://jeoip.com/api/${selectedItem}`;
 
-  const submitHandler = () => {
-    console.log(url);
+  const submitHandler = async () => {
+    setLoading(true)
+    try {
+      const response = await axios.get(url);
+      console.log(response);
+    } catch (error) {
+      
+    } finally {
+      setLoading(false)
+    }
   }
   
   return (
@@ -230,7 +241,7 @@ const IPAPI: React.FC<Props> = (props) => {
         <IPAPIItems />
         <IPAPIUrl url={url} />
         <IPAPIResult className="mt-3" />
-        <IPAPIInput onEnterIP={onEnterIPHandler} onSubmit={submitHandler} className="mt-3" />
+        <IPAPIInput loading={loading} onEnterIP={onEnterIPHandler} onSubmit={submitHandler} className="mt-3" />
       </div>
     </IPAPIContext.Provider>
   );
