@@ -5,3 +5,17 @@
     font-weight: bold;
   }
 }
+
+.link {
+  text-decoration: none;
+
+  &__text {
+    font-size: 13px;
+    font-weight: normal;
+    color: var(--text-regular-color)
+  }
+
+  &__icon {
+    color: var(--primary-color);
+  }
+}

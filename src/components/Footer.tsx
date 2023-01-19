@@ -1,6 +1,6 @@
 import Brand from "./base/Brand";
-import ContactUs from "./base/ContactUs";
-import Links from "./base/Links";
+import ContactUs from "./ContactUs";
+import Links from "./Links";
 
 import styles from "../styles/Footer.module.scss";
 import Props from "@/types/Props";

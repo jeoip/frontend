@@ -1,6 +1,32 @@
-import ContactUsItem from "./ContactUsItem";
-import styles from "../../styles/ContactUs.module.scss";
+import styles from "@/styles/ContactUs.module.scss";
 import { FormattedMessage } from "react-intl";
+import Props from "@/types/Props";
+
+export interface ContactUsItemProps {
+  title: string,
+  value: string,
+  href: string,
+  icon: string,
+}
+
+const ContactUsItem: React.FC<Props & ContactUsItemProps> = (props) => {
+  return (
+    <div className={`${props.className} d-flex flex-row`}>
+      <span
+        className={`${styles["contact-us-item__icon"]} mdi ${props.icon} mt-1`}
+      ></span>
+      <p className={`${styles["contact-us-item__title"]} my-auto mx-1`}>
+        <FormattedMessage id={props.title}/>
+      </p>
+      <a
+        href={props.href}
+        className={`${styles["contact-us-item__value"]} my-auto mx-3`}
+      >
+        {props.value}
+      </a>
+    </div>
+  );
+};
 
 const ContactUs = () => {
   const items = [

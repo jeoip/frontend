@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Brand from "./base/Brand";
 import Card from "./base/Card";
-import FAQ from "./base/FAQ";
+import FAQ from "./FAQ";
 import Spinner from "./base/Spinner";
 import IPAPI from "./ip/IPAPI";
 import IPDataTable from "./ip/IPDataTable";
