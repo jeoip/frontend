@@ -7,6 +7,7 @@ export interface ContactUsItemProps {
   value: string,
   href: string,
   icon: string,
+  color: string,
 }
 
 const ContactUsItem: React.FC<Props & ContactUsItemProps> = (props) => {
@@ -20,7 +21,11 @@ const ContactUsItem: React.FC<Props & ContactUsItemProps> = (props) => {
       </p>
       <a
         href={props.href}
+        target="_blank"
         className={`${styles["contact-us-item__value"]} my-auto mx-3`}
+        style={{
+          color: props.color
+        }}
       >
         {props.value}
       </a>
@@ -33,20 +38,23 @@ const ContactUs = () => {
     {
       title: "contact.us.phone",
       value: "031-34420301",
-      href: "#",
+      href: "tel:03134420301",
       icon: "mdi-phone",
+      color: 'black'
     },
     {
       title: "contact.us.email",
       value: "hi@dnj.co.ir",
-      href: "#",
+      href: "mailto:hi@dnj.co.ir",
       icon: "mdi-email",
+      color: 'black'
     },
     {
       title: "contact.us.support",
       value: "کلیک کنید",
-      href: "#",
+      href: "https://t.me/dnjco",
       icon: "mdi-headset",
+      color: '#1362C2'
     },
   ];
 
@@ -64,6 +72,7 @@ const ContactUs = () => {
             value={item.value}
             href={item.href}
             icon={item.icon}
+            color={item.color}
             key={index}
           />
         ))}
