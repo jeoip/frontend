@@ -18,6 +18,7 @@ interface IPAPIUrlProps {
 interface IPAPIResultProps {
   value: string | object;
   error: boolean;
+  loading: boolean;
 }
 
 interface IPAPIInputProps {
@@ -167,10 +168,8 @@ const IPAPIResult: React.FC<IPAPIResultProps & Props> = (props) => {
       clearTimeout(timeout);
     }
   }, [showCopied])
-  
-  if (!value) {
-    return (<></>)
-  }
+
+  if (props.loading || !value) return <></>
 
   const dir = (props.error && getDirection() === 'rtl') ? 'rtl' : 'ltr'
 
@@ -179,9 +178,16 @@ const IPAPIResult: React.FC<IPAPIResultProps & Props> = (props) => {
       <div
         className={`${props.className} ${styles["ip-api-result__container"]} d-flex flex-row justify-content-between`}
       >
-        <pre onClick={copyToClipboard} className={`${styles["ip-api-result__value"]} mx-1 my-auto`} style={{fontFamily: (props.error) ? 'IRANSans': ''}}>
-          {value}
-        </pre>
+        {props.error && (
+          <span className={`${styles["ip-api-result__value"]} mx-1 my-auto`}>
+            <FormattedMessage id="ip.api.result.error"/>
+          </span>
+        )}
+        {!props.error && (
+          <pre onClick={copyToClipboard} className={`${styles["ip-api-result__value"]} mx-1 my-auto`}>
+            {value}
+          </pre>
+        )}
       </div>
       {showCopied && (
         <div className="d-flex flex-row align-items-center mt-1">
@@ -255,7 +261,7 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
             />
           )}
         </FormattedMessage>
-        <button type="button" className={`${styles["ip-api-input__submit"]} btn mt-3 mt-sm-0`} onClick={submitHandler}>
+        <button disabled={!ipValid} type="button" className={`${styles["ip-api-input__submit"]} btn btn-primary mt-3 mt-sm-0`} onClick={submitHandler}>
           {props.loading && <span className="spinner-border spinner-border-sm mt-1 mx-1" role="status" aria-hidden="true"></span>}
           {!props.loading && <FormattedMessage id="ip.api.input.check" />}
         </button>
@@ -285,7 +291,6 @@ const IPAPI: React.FC<Props> = (props) => {
     : `https://jeoip.ir/api/${selectedItem}`;
 
   const submitHandler = async () => {
-    setResult('')
     setError(false)
     setLoading(true)
     try {
@@ -293,7 +298,6 @@ const IPAPI: React.FC<Props> = (props) => {
       setResult(response.data)
     } catch (error) {
       setError(true)
-      setResult(intl.messages['ip.api.result.error'].toString())
     } finally {
       setLoading(false)
     }
@@ -311,7 +315,7 @@ const IPAPI: React.FC<Props> = (props) => {
         <IPAPIHeader />
         <IPAPIItems />
         <IPAPIUrl url={url} />
-        <IPAPIResult value={result} error={error} className="mt-3" />
+        <IPAPIResult value={result} error={error} loading={loading} className="mt-3" />
         <IPAPIInput loading={loading} onEnterIP={onEnterIPHandler} onSubmit={submitHandler} className="mt-3" />
       </div>
     </IPAPIContext.Provider>
