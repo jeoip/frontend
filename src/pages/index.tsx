@@ -93,7 +93,7 @@ export default function Home() {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <main dir={getDirection()}>
-        <Map lat={state.latitude} lng={state.longitude} zoom={13}/>
+        <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>
         <IPCard onIPReady={onIPReadyHandler} onIPInformationReady={onIPInformationReadyHandler}/>
       </main>
       <Footer dir={getDirection()}></Footer>

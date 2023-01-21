@@ -1,6 +1,7 @@
+import dynamic from "next/dynamic";
 import Props from "@/types/Props";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Brand from "./base/Brand";
 import Card from "./base/Card";
 import FAQ from "./FAQ";
@@ -8,6 +9,14 @@ import Spinner from "./base/Spinner";
 import IPAPI from "./ip/IPAPI";
 import IPDataTable from "./ip/IPDataTable";
 import IPInformation from "./ip/IPInformation";
+import IPContext from "@/store/IPContext";
+
+const Map = dynamic(
+  () => {
+    return import('@/components/Map');
+  },
+  { ssr: false }
+);
 
 interface IPCardProps {
   onIPReady: Function;
@@ -16,6 +25,7 @@ interface IPCardProps {
 
 const IPCard: React.FC<IPCardProps & Props> = (props) => {
 
+  const ctx = useContext(IPContext)
   const [loading, setLoading] = useState(false);
 
   const getIP = async () => {
@@ -36,13 +46,14 @@ const IPCard: React.FC<IPCardProps & Props> = (props) => {
   }, []);
 
   return (
-    <Card className="px-5">
+    <Card>
       <Brand row={true}></Brand>
       {loading && <Spinner className="mx-auto" />}
       {!loading && (
         <>
           <IPInformation />
           <IPDataTable className="mt-4" />
+          {ctx && <Map className="d-block d-sm-none my-3" lat={ctx.latitude} lng={ctx.longitude} />}
         </>
       )}
       <IPAPI className="mt-5"/>
