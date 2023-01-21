@@ -59,7 +59,9 @@ const Map: React.FC<MapProps & Props> = (props) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker icon={markerIcon} position={markerPosition} />
+      {(props.lat != -200 && props.lng != -200) && (
+        <Marker icon={markerIcon} position={markerPosition} />
+      )}
       <RecenterAutomatically center={center} />
     </MapContainer>
   );
