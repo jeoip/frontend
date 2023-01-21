@@ -57,7 +57,7 @@ const IPCard: React.FC<IPCardProps & Props> = (props) => {
   }, []);
 
   return (
-    <Card className="mb-3 m-sm-3 px-sm-5 py-3">
+    <Card className={`${styles['ip-card__container']} mb-3 m-sm-3 px-sm-5 py-3`}>
       <Brand row={true}></Brand>
       {loading && <Spinner className="mx-auto" />}
       {!loading && !error && (

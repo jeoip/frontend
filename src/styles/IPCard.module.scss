@@ -1,5 +1,9 @@
 .ip-card {
 
+  &__container {
+    max-width: 550px;
+  }
+
   &__error {
     font-size: 15px;
     font-style: normal;

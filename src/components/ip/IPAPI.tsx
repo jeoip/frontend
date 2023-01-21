@@ -169,7 +169,7 @@ const IPAPIResult: React.FC<IPAPIResultProps & Props> = (props) => {
     }
   }, [showCopied])
 
-  if (props.loading || !value) return <></>
+  if ((props.loading || !value) && !props.error) return <></>
 
   const dir = (props.error && getDirection() === 'rtl') ? 'rtl' : 'ltr'
 
