@@ -3,11 +3,20 @@ import styles from "@/styles/IPDataTable.module.scss";
 import { FormattedMessage } from "react-intl";
 import { useContext, useEffect, useState } from "react";
 import IPContext from "@/store/IPContext";
-import Spinner from "../base/Spinner";
+import { IPv4, IPv6 } from "ip-num/IPNumber";
 
 const ipToInt = (ip: string) => {
-  const result = ip.split(".").map(parseFloat).reduce((int, value) => int * 256 + +value);
-  return result || '';
+  try {
+    if (ip.indexOf(':') != -1) {
+      let ipv6 = new IPv6(ip);
+      return parseInt(ipv6.toBinaryString(), 2)
+    } else {
+      let ipv4 = new IPv4(ip);
+      return parseInt(ipv4.toBinaryString(), 2)
+    }
+  } catch (error) {
+    return ''
+  }
 }
 
 const IPDataTable: React.FC<Props> = (props) => {

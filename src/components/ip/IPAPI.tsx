@@ -5,6 +5,7 @@ import { getDirection } from "@/lang/locale";
 import { useContext, useEffect, useState } from "react";
 import IPAPIContext from "@/store/IPAPIContext";
 import axios from "axios";
+import { Validator } from "ip-num/Validator";
 
 interface IPAPIItemProps {
   title: string;
@@ -206,40 +207,7 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 
   const validateIPaddress = (event: React.ChangeEvent<HTMLInputElement>) => {
     const ip = event.target.value;
-    
-    // IPV6 validation
-    const ipv6Exp = /(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/gi;
-    if (ipv6Exp.test(ip)) {
-      setIPValid(true)
-      props.onEnterIP(ip);
-      return
-    }
-
-    // IPV4 validation
-    const blocks = ip.split(".");
-    if (!ip) {
-      setIPValid(null);
-      props.onEnterIP("");
-      return;
-    }
-    if (blocks.length != 4) {
-      setIPValid(false);
-      props.onEnterIP("");
-      return;
-    }
-    let valid = true;
-    for (let block of blocks) {
-      if (!block) {
-        valid = false;
-        break;
-      }
-      let number = parseInt(block);
-      if (number < 0 || number > 255) {
-        valid = false;
-        break;
-      }
-    }
-
+    const valid = Validator.isValidIPv4String(ip)[0] || Validator.isValidIPv6String(ip)[0]
     setIPValid(valid);
     props.onEnterIP(valid ? ip : "");
   };
