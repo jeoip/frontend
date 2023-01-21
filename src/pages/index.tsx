@@ -97,7 +97,7 @@ export default function Home() {
         <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>
         <IPCard onIPReady={onIPReadyHandler} onIPInformationReady={onIPInformationReadyHandler}/>
       </main>
-      <footer>
+      <footer dir={getDirection()}>
         <Footer />
       </footer>
     </IPContext.Provider>
