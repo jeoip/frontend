@@ -6,6 +6,7 @@ import { getDirection } from "@/lang/locale";
 import { useState } from "react";
 import IPContext, { IPContextType } from "@/store/IPContext";
 import { AxiosResponse } from "axios";
+import styles from '@/styles/Main.module.scss';
 
 const Map = dynamic(
   () => {
@@ -92,11 +93,11 @@ export default function Home() {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <main dir={getDirection()}>
+      <main dir={getDirection()} className={(getDirection() === 'rtl') ? styles['main__rtl'] : styles.main}>
         <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>
         <IPCard onIPReady={onIPReadyHandler} onIPInformationReady={onIPInformationReadyHandler}/>
+        <Footer />
       </main>
-      <Footer dir={getDirection()}></Footer>
     </IPContext.Provider>
   );
 }
