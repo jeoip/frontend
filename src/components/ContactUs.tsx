@@ -19,16 +19,23 @@ const ContactUsItem: React.FC<Props & ContactUsItemProps> = (props) => {
       <p className={`${styles["contact-us-item__title"]} my-auto mx-1`}>
         <FormattedMessage id={props.title}/>
       </p>
-      <a
-        href={props.href}
-        target="_blank"
-        className={`${styles["contact-us-item__value"]} my-auto mx-3`}
-        style={{
-          color: props.color
+      <FormattedMessage id={props.value}>
+        {text => {
+          return (
+            <a
+              href={props.href}
+              target="_blank"
+              className={`${styles["contact-us-item__value"]} my-auto mx-3`}
+              style={{
+                color: props.color
+              }}
+            >
+              {text}
+            </a>
+          )
         }}
-      >
-        {props.value}
-      </a>
+      </FormattedMessage>
+      
     </div>
   );
 };
@@ -51,7 +58,7 @@ const ContactUs = () => {
     },
     {
       title: "contact.us.support",
-      value: "کلیک کنید",
+      value: "contact.us.click",
       href: "https://t.me/dnjco",
       icon: "mdi-headset",
       color: '#1362C2'
