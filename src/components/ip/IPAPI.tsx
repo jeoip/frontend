@@ -130,6 +130,7 @@ const IPAPIUrl: React.FC<IPAPIUrlProps & Props> = (props) => {
 
   return (
     <div
+      dir="ltr"
       className={`${props.className} ${styles["ip-api-url__container"]} d-flex flex-row justify-content-between`}
     >
       <div className="d-flex flex-row align-items-center">
@@ -171,12 +172,14 @@ const IPAPIResult: React.FC<IPAPIResultProps & Props> = (props) => {
     return (<></>)
   }
 
+  const dir = (props.error && getDirection() === 'rtl') ? 'rtl' : 'ltr'
+
   return (
-    <div>
+    <div dir={dir}>
       <div
         className={`${props.className} ${styles["ip-api-result__container"]} d-flex flex-row justify-content-between`}
       >
-        <pre onClick={copyToClipboard} className={`${styles["ip-api-result__value"]} mx-1 my-auto`}>
+        <pre onClick={copyToClipboard} className={`${styles["ip-api-result__value"]} mx-1 my-auto`} style={{fontFamily: (props.error) ? 'IRANSans': ''}}>
           {value}
         </pre>
       </div>
@@ -282,6 +285,7 @@ const IPAPI: React.FC<Props> = (props) => {
     : `https://jeoip.ir/api/${selectedItem}`;
 
   const submitHandler = async () => {
+    setResult('')
     setError(false)
     setLoading(true)
     try {
