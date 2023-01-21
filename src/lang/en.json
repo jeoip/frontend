@@ -17,6 +17,18 @@
   "ip.data.table.user.agent.comment": "User agent: Comment",
   "ip.data.table.user.agent.raw": "User agent: Raw",
   "faq.title": "FAQ",
+  "faq.questions": [
+    "How can I determine which version of IP to use?",
+    "How can I get this information in JSON format?",
+    "Is it allowed to use this tool in programs?",
+    "Can I launch this tool exclusively for myself?"
+  ],
+  "faq.answers": [
+    "Since 2018-07-25, specifying the IP version in protocols is obsolete and not possible. But if possible, you can determine the IP version by using the correct parameter in the program you are using. For example, in the curl command, you can specify which IP version you have to be used with parameters -4 and -6.",
+    "By setting the request header parameter equal to application/json, you can receive the information in JSON format.",
+    "Yes, as long as the number of your requests does not exceed a certain limit and does not create pressure on our servers, you can use this tool in the programs. In your programs, try not to send more than one request per minute. If your requests increase, you will be prevented from creating a new request for some time.",
+    "Yes, you can contact us using the contact numbers and we will set up your own dedicated tool."
+  ],
   "contact.us.title": "Contact Us",
   "contact.us.phone": "Phone:",
   "contact.us.email": "Email:",
