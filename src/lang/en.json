@@ -53,5 +53,6 @@
   "ip.api.input.title": "Check IP (Optional)",
   "ip.api.input.check": "Check",
   "ip.api.input.placeholder": "Your IP",
+  "ip.api.result.error": "Error! Please try again later",
   "ip.api.copied": "Copied"
 }

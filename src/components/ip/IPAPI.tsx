@@ -1,5 +1,5 @@
 import Props from "@/types/Props";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import styles from "@/styles/IPAPI.module.scss";
 import { getDirection } from "@/lang/locale";
 import { useContext, useEffect, useState } from "react";
@@ -17,6 +17,7 @@ interface IPAPIUrlProps {
 
 interface IPAPIResultProps {
   value: string | object;
+  error: boolean;
 }
 
 interface IPAPIInputProps {
@@ -152,6 +153,7 @@ const IPAPIResult: React.FC<IPAPIResultProps & Props> = (props) => {
   const value = (typeof props.value == 'string') ? props.value : JSON.stringify(props.value, undefined, 4);
   
   const copyToClipboard = () => {
+    if (props.error) return
     navigator.clipboard.writeText(value);
     setShowCopied(true);
   }
@@ -260,7 +262,9 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 };
 
 const IPAPI: React.FC<Props> = (props) => {
+  const intl = useIntl()
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const [result, setResult] = useState('');
   const [enteredIP, setEnteredIP] = useState("");
   const [selectedItem, setSelectedItem] = useState("ip");
@@ -278,12 +282,14 @@ const IPAPI: React.FC<Props> = (props) => {
     : `https://jeoip.ir/api/${selectedItem}`;
 
   const submitHandler = async () => {
+    setError(false)
     setLoading(true)
     try {
       const response = await axios.get(url);
       setResult(response.data)
     } catch (error) {
-      setResult('Error! Please try again later.')
+      setError(true)
+      setResult(intl.messages['ip.api.result.error'].toString())
     } finally {
       setLoading(false)
     }
@@ -301,7 +307,7 @@ const IPAPI: React.FC<Props> = (props) => {
         <IPAPIHeader />
         <IPAPIItems />
         <IPAPIUrl url={url} />
-        <IPAPIResult value={result} className="mt-3" />
+        <IPAPIResult value={result} error={error} className="mt-3" />
         <IPAPIInput loading={loading} onEnterIP={onEnterIPHandler} onSubmit={submitHandler} className="mt-3" />
       </div>
     </IPAPIContext.Provider>
