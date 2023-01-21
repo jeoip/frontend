@@ -223,7 +223,7 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
   };
 
   const submitHandler = () => {
-    if (ipValid) {
+    if (ipValid && !props.loading) {
       props.onSubmit()
     }
   }
@@ -250,7 +250,7 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
             />
           )}
         </FormattedMessage>
-        <button type="button" disabled={props.loading} className={`${styles["ip-api-input__submit"]} btn mt-3 mt-sm-0`} onClick={submitHandler}>
+        <button type="button" className={`${styles["ip-api-input__submit"]} btn mt-3 mt-sm-0`} onClick={submitHandler}>
           {props.loading && <span className="spinner-border spinner-border-sm mt-1 mx-1" role="status" aria-hidden="true"></span>}
           {!props.loading && <FormattedMessage id="ip.api.input.check" />}
         </button>
