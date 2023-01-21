@@ -34,12 +34,13 @@ const IPCard: React.FC<IPCardProps & Props> = (props) => {
     setError(false);
     setLoading(true);
     try {
-      const geolocation = await axios.get("https://geolocation-db.com/json/");
-      props.onIPReady(geolocation.data.IPv4);
-      const response = await axios.get(
-        `https://jeoip.ir/api/${geolocation.data.IPv4}`
+      const ipResponse = await axios.get("https://jeoip.ir/api/ip");
+      const ip = ipResponse.data
+      props.onIPReady(ip);
+      const informationResponse = await axios.get(
+        `https://jeoip.ir/api/${ip}`
       );
-      props.onIPInformationReady(response);
+      props.onIPInformationReady(informationResponse);
     } catch (error) {
       setError(true);
     } finally {
