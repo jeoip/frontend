@@ -99,7 +99,7 @@ const IPAPIItems: React.FC<Props> = (props) => {
 
   return (
     <div
-      className={`${props.className} ${styles["ip-api-items"]} d-flex flex-row align-items-center`}
+      className={`${props.className} ${styles["ip-api-items"]} d-flex flex-row flex-wrap align-items-center`}
     >
       {items.map((item, index) => (
         <IPAPIItem title={item.title} value={item.value} key={index} />
@@ -174,12 +174,12 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 
   return (
     <div
-      className={`${props.className} d-flex flex-row justify-content-between`}
+      className={`${props.className} d-flex flex-column flex-sm-row justify-content-sm-between`}
     >
       <p className={`${styles["ip-api-input__title"]} my-auto`}>
         <FormattedMessage id="ip.api.input.title" />
       </p>
-      <div>
+      <div className="d-flex flex-column flex-sm-row mt-3 mt-sm-0">
         <FormattedMessage id="ip.api.input.placeholder">
           {(placeholder) => (
             <input
@@ -189,12 +189,12 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
                 typeof ipValid == "boolean" && !ipValid
                   ? styles["ip-api-input__input-invalid"]
                   : ""
-              } mx-3`}
+              } mx-sm-3`}
               onInput={validateIPaddress}
             />
           )}
         </FormattedMessage>
-        <button type="button" disabled={props.loading} className={`${styles["ip-api-input__submit"]} btn`} onClick={submitHandler}>
+        <button type="button" disabled={props.loading} className={`${styles["ip-api-input__submit"]} btn mt-3 mt-sm-0`} onClick={submitHandler}>
           {props.loading && <span className="spinner-border spinner-border-sm mt-1 mx-1" role="status" aria-hidden="true"></span>}
           {!props.loading && <FormattedMessage id="ip.api.input.check" />}
         </button>

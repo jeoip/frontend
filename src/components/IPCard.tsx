@@ -46,18 +46,18 @@ const IPCard: React.FC<IPCardProps & Props> = (props) => {
   }, []);
 
   return (
-    <Card>
+    <Card className="m-sm-3 px-sm-5 py-3">
       <Brand row={true}></Brand>
       {loading && <Spinner className="mx-auto" />}
       {!loading && (
         <>
-          <IPInformation />
-          <IPDataTable className="mt-4" />
+          <IPInformation className="mx-3 mx-sm-0"/>
+          <IPDataTable className="mt-4 mx-3 mx-sm-0" />
           {ctx && <Map className="d-block d-sm-none my-3" lat={ctx.latitude} lng={ctx.longitude} />}
         </>
       )}
-      <IPAPI className="mt-5"/>
-      <FAQ className="mt-5" />
+      <IPAPI className="mt-5 mx-3 mx-sm-0"/>
+      <FAQ className="mt-5 mx-3 mx-sm-0" />
     </Card>
   );
 };

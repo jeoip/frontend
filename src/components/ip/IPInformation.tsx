@@ -13,7 +13,7 @@ export interface IPInformationItemProps {
 const IPInformationItem: React.FC<Props & IPInformationItemProps> = (props) => {
   return (
     <>
-      <p className={`${styles["ip-information-item__title"]}`}>
+      <p className={`${props.className} ${styles["ip-information-item__title"]}`}>
         <FormattedMessage id={props.title}/>
       </p>
       <div className={`${styles["ip-information-item__body"]} d-flex flex-row`}>
@@ -50,8 +50,9 @@ const IPInformationItems: React.FC<Props> = () => {
       <div className="row">
         {items.map((item, index) => {
           return (
-            <div className="col d-flex flex-column" key={index}>
+            <div className="col-12 col-sm-6 d-flex flex-column" key={index}>
               <IPInformationItem
+                className="mt-3 mt-sm-0"
                 title={item.title}
                 value={item.value}
                 icon={item.icon}
@@ -75,7 +76,7 @@ const IPInformation: React.FC<Props> = (props) => {
       </p>
       <div className="d-flex flex-row justify-content-between">
         <p className={`${styles["ip-information__ip"]}`}>{ctx?.ip}</p>
-        <button className={`${styles["ip-information__btn"]}`}>
+        <button className={`${styles["ip-information__btn"]} d-none d-sm-block`}>
           <FormattedMessage id="ip.informations.btn"/>
         </button>
       </div>
