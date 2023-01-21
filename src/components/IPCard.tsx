@@ -52,7 +52,7 @@ const IPCard: React.FC<IPCardProps & Props> = (props) => {
   }
 
   useEffect(() => {
-    // getIP();
+    getIP();
   }, []);
 
   return (

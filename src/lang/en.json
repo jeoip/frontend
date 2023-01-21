@@ -52,5 +52,6 @@
   "ip.api.items.port": "Port",
   "ip.api.input.title": "Check IP (Optional)",
   "ip.api.input.check": "Check",
-  "ip.api.input.placeholder": "Your IP"
+  "ip.api.input.placeholder": "Your IP",
+  "ip.api.copied": "Copied"
 }

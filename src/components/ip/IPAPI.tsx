@@ -2,7 +2,7 @@ import Props from "@/types/Props";
 import { FormattedMessage } from "react-intl";
 import styles from "@/styles/IPAPI.module.scss";
 import { getDirection } from "@/lang/locale";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import IPAPIContext from "@/store/IPAPIContext";
 import axios from "axios";
 
@@ -110,14 +110,39 @@ const IPAPIItems: React.FC<Props> = (props) => {
 
 const IPAPIUrl: React.FC<IPAPIUrlProps & Props> = (props) => {
 
+  const [showCopied, setShowCopied] = useState(false)
   const value = `curl ${props.url}`
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(value);
+    setShowCopied(true);
+  }
+
+  useEffect(() => {
+    const timeout  = setTimeout(() => {
+      setShowCopied(false);
+    }, 3000)
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [showCopied])
 
   return (
     <div
-      className={`${props.className} ${styles["ip-api-url__container"]} d-flex flex-row align-items-center`}
+      className={`${props.className} ${styles["ip-api-url__container"]} d-flex flex-row justify-content-between`}
     >
-      <span className="mdi mdi-currency-usd"></span>
-      <span className={`${styles["ip-api-url__value"]} mx-2`}>{value}</span>
+      <div className="d-flex flex-row align-items-center">
+        <span className="mdi mdi-currency-usd"></span>
+        <span onClick={copyToClipboard} className={`${styles["ip-api-url__value"]} mx-2`}>{value}</span>
+      </div>
+      {showCopied && (
+        <div className="d-flex flex-row align-items-center">
+          <span className={`${styles["ip-api-url__copied-value"]} mx-1`}>
+            <FormattedMessage id="ip.api.copied"/>
+          </span>
+          <span className={`${styles["ip-api-url__copied-icon"]} mdi mdi-check`}></span>
+        </div>
+      )}
     </div>
   );
 };
