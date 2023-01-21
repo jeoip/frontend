@@ -96,8 +96,10 @@ export default function Home() {
       <main dir={getDirection()} className={(getDirection() === 'rtl') ? styles['main__rtl'] : styles.main}>
         <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>
         <IPCard onIPReady={onIPReadyHandler} onIPInformationReady={onIPInformationReadyHandler}/>
-        <Footer />
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </IPContext.Provider>
   );
 }
