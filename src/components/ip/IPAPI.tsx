@@ -148,19 +148,44 @@ const IPAPIUrl: React.FC<IPAPIUrlProps & Props> = (props) => {
 };
 
 const IPAPIResult: React.FC<IPAPIResultProps & Props> = (props) => {
-  
+  const [showCopied, setShowCopied] = useState(false)
   const value = (typeof props.value == 'string') ? props.value : JSON.stringify(props.value, undefined, 4);
+  
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(value);
+    setShowCopied(true);
+  }
+  
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowCopied(false);
+    }, 3000)
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [showCopied])
+  
   if (!value) {
     return (<></>)
   }
 
   return (
-    <div
-      className={`${props.className} ${styles["ip-api-result__container"]} d-flex flex-row align-items-center`}
-    >
-      <pre className={`${styles["ip-api-result__value"]} mx-1 my-auto`}>
-        {value}
-      </pre>
+    <div>
+      <div
+        className={`${props.className} ${styles["ip-api-result__container"]} d-flex flex-row justify-content-between`}
+      >
+        <pre onClick={copyToClipboard} className={`${styles["ip-api-result__value"]} mx-1 my-auto`}>
+          {value}
+        </pre>
+      </div>
+      {showCopied && (
+        <div className="d-flex flex-row align-items-center mt-1">
+          <span className={`${styles["ip-api-url__copied-icon"]} mdi mdi-check`}></span>
+          <span className={`${styles["ip-api-url__copied-value"]} mx-1`}>
+            <FormattedMessage id="ip.api.copied"/>
+          </span>
+        </div>
+      )}
     </div>
   );
 };
