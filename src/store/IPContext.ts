@@ -13,6 +13,17 @@ export interface IPContextType {
   user_agent: string,
 }
 
-const IPContext = createContext<IPContextType | null>(null);
+const IPContext = createContext<IPContextType>({
+  ip: '',
+  subnet: '',
+  city: '',
+  country: '',
+  latitude: -1,
+  longitude: -1,
+  asn: '',
+  asn_org: '',
+  hostname: '',
+  user_agent: '',
+});
 
 export default IPContext;
