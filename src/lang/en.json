@@ -1,5 +1,7 @@
 {
   "brand.subtitle": "IP information's Tool",
+  "ip.card.error": "An error occurred in receiving information. Click the button below to try again.",
+  "ip.card.retry": "Try again",
   "ip.informations.title": "Your IP:",
   "ip.informations.btn": "General",
   "ip.informations.location": "Location",

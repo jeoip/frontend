@@ -1,5 +1,7 @@
 {
   "brand.subtitle": "ابزاری برای دریافت اطلاعات آی پی",
+  "ip.card.error": "در دریافت اطلاعات خطایی رخ داده است. برای تلاش مجدد بر روی دکمه زیر کلیک کنید.",
+  "ip.card.retry": "تلاش مجدد!",
   "ip.informations.title": "آی پی عمومی شما در حال حاضر:",
   "ip.informations.btn": "عمومی",
   "ip.informations.location": "موقعیت جغرافیایی",
