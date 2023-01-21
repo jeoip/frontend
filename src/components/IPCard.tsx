@@ -51,13 +51,13 @@ const IPCard: React.FC<IPCardProps & Props> = (props) => {
       {loading && <Spinner className="mx-auto" />}
       {!loading && (
         <>
-          <IPInformation className="mx-3 mx-sm-0"/>
-          <IPDataTable className="mt-4 mx-3 mx-sm-0" />
+          <IPInformation className="mx-4 mx-sm-0"/>
+          <IPDataTable className="mt-4 mx-4 mx-sm-0" />
           {ctx && <Map className="d-block d-sm-none my-3" lat={ctx.latitude} lng={ctx.longitude} />}
         </>
       )}
-      <IPAPI className="mt-5 mx-3 mx-sm-0"/>
-      <FAQ className="mt-5 mx-3 mx-sm-0" />
+      <IPAPI className="mt-5 mx-4 mx-sm-0"/>
+      <FAQ className="mt-5 mx-4 mx-sm-0" />
     </Card>
   );
 };

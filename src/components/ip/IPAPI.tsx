@@ -125,7 +125,10 @@ const IPAPIUrl: React.FC<IPAPIUrlProps & Props> = (props) => {
 const IPAPIResult: React.FC<IPAPIResultProps & Props> = (props) => {
   
   const value = (typeof props.value == 'string') ? props.value : JSON.stringify(props.value, undefined, 4);
-  
+  if (!value) {
+    return (<></>)
+  }
+
   return (
     <div
       className={`${props.className} ${styles["ip-api-result__container"]} d-flex flex-row align-items-center`}
