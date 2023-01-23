@@ -3,7 +3,7 @@
   "ip.card.error": "An error occurred in receiving information. Click the button below to try again.",
   "ip.card.retry": "Try again",
   "ip.informations.title": "Your IP:",
-  "ip.informations.btn": "General",
+  "ip.informations.btn": "Public",
   "ip.informations.location": "Location",
   "ip.informations.subnet": "Subnet",
   "ip.data.table.title": "Your IP Information:",
