@@ -8,6 +8,7 @@ import IPContext, { IPContextType } from "@/store/IPContext";
 import axios from "axios";
 import styles from '@/styles/Home.module.scss';
 import { GetServerSideProps, InferGetServerSidePropsType  } from "next";
+import { useRouter } from "next/router";
 
 
 export const getServerSideProps: GetServerSideProps<
@@ -17,12 +18,16 @@ export const getServerSideProps: GetServerSideProps<
     const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/json`);
     return {
       props: {
-        data: response.data
+        data: response.data,
+        error: false
       }
     }
   } catch (error) {
     return {
-      notFound: true,
+      props: {
+        data: undefined,
+        error: true
+      }
     }
   }
 }
@@ -34,8 +39,17 @@ const Map = dynamic(
   { ssr: false }
 );
 
-export default function Home({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home({ data, error }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
   const [state, setState] = useState<IPContextType>(data);
+
+  const softRefresh = async () => {
+    setLoading(true)
+    await router.replace(router.asPath)
+    setLoading(false)
+  }
 
   return (
     <IPContext.Provider value={state}>
@@ -76,8 +90,8 @@ export default function Home({ data }: InferGetServerSidePropsType<typeof getSer
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <main dir={getDirection()} className={(getDirection() === 'rtl') ? styles['home__rtl'] : styles.home}>
-        <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>
-        <IPCard/>
+        {!error && <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>}
+        <IPCard loading={loading} error={error} onRetry={softRefresh}/>
       </main>
       <footer dir={getDirection()} className={(getDirection() === 'rtl') ? styles['home__rtl'] : styles.home}>
         <Footer />
