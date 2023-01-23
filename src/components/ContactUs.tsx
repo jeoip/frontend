@@ -19,7 +19,7 @@ const ContactUsItem: React.FC<Props & ContactUsItemProps> = (props) => {
       <p className={`${styles["contact-us-item__title"]} my-auto mx-1`}>
         <FormattedMessage id={props.title}/>
       </p>
-      <FormattedMessage id={props.value}>
+      <FormattedMessage id={props.value} defaultMessage={props.value}>
         {text => {
           return (
             <a
