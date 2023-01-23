@@ -5,8 +5,8 @@ import Head from "next/head";
 import { getDirection } from "@/lang/locale";
 import { useState } from "react";
 import IPContext, { IPContextType } from "@/store/IPContext";
-import axios, { AxiosResponse } from "axios";
-import styles from '@/styles/Main.module.scss';
+import axios from "axios";
+import styles from '@/styles/Home.module.scss';
 import { GetServerSideProps, InferGetServerSidePropsType  } from "next";
 
 
@@ -75,11 +75,11 @@ export default function Home({ data }: InferGetServerSidePropsType<typeof getSer
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <main dir={getDirection()} className={(getDirection() === 'rtl') ? styles['main__rtl'] : styles.main}>
+      <main dir={getDirection()} className={(getDirection() === 'rtl') ? styles['home__rtl'] : styles.home}>
         <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>
         <IPCard/>
       </main>
-      <footer dir={getDirection()}>
+      <footer dir={getDirection()} className={(getDirection() === 'rtl') ? styles['home__rtl'] : styles.home}>
         <Footer />
       </footer>
     </IPContext.Provider>
