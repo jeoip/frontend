@@ -1,29 +1,39 @@
 import { createContext } from "react";
 
 export interface IPContextType {
-  ip: string,
+  countryCode: string,
   subnet: string,
-  city: string,
   country: string,
-  latitude: number,
-  longitude: number,
+  country_eu: boolean,
+  region: string,
+  city: string,
   asn: string,
   asn_org: string,
-  hostname: string,
+  latitude: number,
+  longitude: number,
+  zipcode: string,
+  timezone: string,
   user_agent: string,
+  hostname: string,
+  status: boolean
 }
 
 const IPContext = createContext<IPContextType>({
-  ip: '',
+  countryCode: '',
   subnet: '',
-  city: '',
   country: '',
-  latitude: -1,
-  longitude: -1,
+  country_eu: false,
+  region: '',
+  city: '',
   asn: '',
   asn_org: '',
-  hostname: '',
+  latitude: -1,
+  longitude: -1,
+  zipcode: '',
+  timezone: '',
   user_agent: '',
+  hostname: '',
+  status: false
 });
 
 export default IPContext;

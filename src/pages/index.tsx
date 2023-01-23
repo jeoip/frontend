@@ -19,39 +19,25 @@ export default function Home() {
 
   const [showMap, setShowMap] = useState(false);
   const [state, setState] = useState<IPContextType>({
-    ip: "",
-    subnet: "",
-    city: "",
-    country: "",
-    latitude: -200,
-    longitude: -200,
+    countryCode: '',
+    subnet: '',
+    country: '',
+    country_eu: false,
+    region: '',
+    city: '',
     asn: '',
     asn_org: '',
+    latitude: -200,
+    longitude: -200,
+    zipcode: '',
+    timezone: '',
+    user_agent: '',
     hostname: '',
-    user_agent: ''
+    status: false
   });
 
-  const onIPReadyHandler = (ip: string) => {
-    setState((prevState) => {
-      return { ...prevState, ip: ip };
-    });
-  }
-
-  const onIPInformationReadyHandler = (response: AxiosResponse<any, any>) => {
-    setState((prevState) => {
-      return {
-        ...prevState,
-        subnet: response.data.subnet,
-        city: response.data.city,
-        country: response.data.country,
-        latitude: response.data.latitude,
-        longitude: response.data.longitude,
-        asn: response.data.asn,
-        asn_org: response.data.asn_org,
-        hostname: response.data.hostname,
-        user_agent: response.data.user_agent
-      };
-    });
+  const onDataReadyHandler = (data: IPContextType) => {
+    setState(data)
     setShowMap(true)
   }
 
@@ -95,7 +81,7 @@ export default function Home() {
       </Head>
       <main dir={getDirection()} className={(getDirection() === 'rtl') ? styles['main__rtl'] : styles.main}>
         <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>
-        <IPCard onIPReady={onIPReadyHandler} onIPInformationReady={onIPInformationReadyHandler}/>
+        <IPCard onDataReady={onDataReadyHandler}/>
       </main>
       <footer dir={getDirection()}>
         <Footer />

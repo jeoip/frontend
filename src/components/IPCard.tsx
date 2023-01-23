@@ -21,8 +21,7 @@ const Map = dynamic(
 );
 
 interface IPCardProps {
-  onIPReady: Function;
-  onIPInformationReady: Function;
+  onDataReady: Function
 }
 
 const IPCard: React.FC<IPCardProps & Props> = (props) => {
@@ -34,13 +33,14 @@ const IPCard: React.FC<IPCardProps & Props> = (props) => {
     setError(false);
     setLoading(true);
     try {
-      const ipResponse = await axios.get("https://jeoip.ir/api/ip");
-      const ip = ipResponse.data
-      props.onIPReady(ip);
-      const informationResponse = await axios.get(
-        `https://jeoip.ir/api/${ip}`
-      );
-      props.onIPInformationReady(informationResponse);
+      const response = await axios.get("https://jeoip.ir/api/json");
+      props.onDataReady(response.data)
+      // const ip = ipResponse.data
+      // props.onIPReady(ip);
+      // const informationResponse = await axios.get(
+      //   `https://jeoip.ir/api/${ip}`
+      // );
+      // props.onIPInformationReady(informationResponse);
     } catch (error) {
       setError(true);
     } finally {
