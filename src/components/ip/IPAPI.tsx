@@ -93,11 +93,7 @@ const IPAPIItems: React.FC<Props> = (props) => {
     {
       title: "ip.api.items.json",
       value: "json",
-    },
-    {
-      title: "ip.api.items.port",
-      value: "port",
-    },
+    }
   ];
 
   return (
