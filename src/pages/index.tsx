@@ -5,8 +5,27 @@ import Head from "next/head";
 import { getDirection } from "@/lang/locale";
 import { useState } from "react";
 import IPContext, { IPContextType } from "@/store/IPContext";
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import styles from '@/styles/Main.module.scss';
+import { GetServerSideProps, InferGetServerSidePropsType  } from "next";
+
+
+export const getServerSideProps: GetServerSideProps<
+  {[key: string]: any}
+> = async () => {
+  try {
+    const response = await axios.get(`${process.env.BASE_URL}/api/json`);
+    return {
+      props: {
+        data: response.data
+      }
+    }
+  } catch (error) {
+    return {
+      notFound: true,
+    }
+  }
+}
 
 const Map = dynamic(
   () => {
@@ -15,31 +34,8 @@ const Map = dynamic(
   { ssr: false }
 );
 
-export default function Home() {
-
-  const [showMap, setShowMap] = useState(false);
-  const [state, setState] = useState<IPContextType>({
-    countryCode: '',
-    subnet: '',
-    country: '',
-    country_eu: false,
-    region: '',
-    city: '',
-    asn: '',
-    asn_org: '',
-    latitude: -200,
-    longitude: -200,
-    zipcode: '',
-    timezone: '',
-    user_agent: '',
-    hostname: '',
-    status: false
-  });
-
-  const onDataReadyHandler = (data: IPContextType) => {
-    setState(data)
-    setShowMap(true)
-  }
+export default function Home({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const [state, setState] = useState<IPContextType>(data);
 
   return (
     <IPContext.Provider value={state}>
@@ -81,7 +77,7 @@ export default function Home() {
       </Head>
       <main dir={getDirection()} className={(getDirection() === 'rtl') ? styles['main__rtl'] : styles.main}>
         <Map className="d-none d-sm-block" lat={state.latitude} lng={state.longitude} fixed/>
-        <IPCard onDataReady={onDataReadyHandler}/>
+        <IPCard/>
       </main>
       <footer dir={getDirection()}>
         <Footer />
