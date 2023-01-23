@@ -44,7 +44,7 @@
   "ip.api.title": "از API ما اینگونه استفاده کنید!",
   "ip.api.subtitle": "از طریق گزینه های زیر می توانید نحوه استفاده از هر مورد و نتیجه آن را مشاهده نمایید:",
   "ip.api.items.ip": "آی پی",
-  "ip.api.items.location": "لوکیشن",
+  "ip.api.items.country": "کشور",
   "ip.api.items.country.iso": "country iso",
   "ip.api.items.city": "شهر",
   "ip.api.items.asn": "asn",

@@ -75,8 +75,8 @@ const IPAPIItems: React.FC<Props> = (props) => {
       value: "ip",
     },
     {
-      title: "ip.api.items.location",
-      value: "location",
+      title: "ip.api.items.country",
+      value: "country",
     },
     {
       title: "ip.api.items.country.iso",
