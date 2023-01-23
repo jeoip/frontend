@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps<
   {[key: string]: any}
 > = async () => {
   try {
-    const response = await axios.get(`${process.env.BASE_URL}/api/json`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/json`);
     return {
       props: {
         data: response.data

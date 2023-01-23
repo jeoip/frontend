@@ -250,7 +250,6 @@ const IPAPIInput: React.FC<IPAPIInputProps & Props> = (props) => {
 };
 
 const IPAPI: React.FC<Props> = (props) => {
-  const intl = useIntl()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [result, setResult] = useState('');
@@ -266,8 +265,8 @@ const IPAPI: React.FC<Props> = (props) => {
   };
 
   const url = enteredIP
-    ? `https://jeoip.ir/api/${enteredIP}/${selectedItem}`
-    : `https://jeoip.ir/api/${selectedItem}`;
+    ? `${process.env.NEXT_PUBLIC_BASE_URL}/api/${enteredIP}/${selectedItem}`
+    : `${process.env.NEXT_PUBLIC_BASE_URL}/api/${selectedItem}`;
 
   const submitHandler = async () => {
     setError(false)
