@@ -1,0 +1,14 @@
+.footer {
+  &__container {
+    @media (min-width: 567px) {
+      border-top-left-radius: 80px;
+      border-top-right-radius: 80px;
+    }
+
+    width: 100%;
+    padding: 1rem;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    background-color: #f5f5f5;
+  }
+}

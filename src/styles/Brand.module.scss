@@ -1,0 +1,18 @@
+.brand {
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  &__subtitle {
+    font-size: 12px;
+    font-weight: regular;
+    color: var(--text-regular-color);
+  }
+}

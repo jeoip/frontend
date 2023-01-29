@@ -1,0 +1,25 @@
+.contact-us {
+  &__title {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  &-item {
+    &__title {
+      color: var(--text-regular-text);
+      font-size: 14px;
+      font-weight: 500;
+    }
+  
+    &__value {
+      color: var(--text-regular-text);
+      font-size: 13px;
+      text-decoration: none;
+    }
+  
+    &__icon {
+      color: var(--primary-color);
+    }
+  }
+}
