@@ -75,7 +75,7 @@ const IPInformation: React.FC<Props> = (props) => {
         <FormattedMessage id="ip.informations.title" />
       </p>
       <div className="d-flex flex-row justify-content-between">
-        <p className={`${styles["ip-information__ip"]}`}>{ctx.hostname}</p>
+        <p className={`${styles["ip-information__ip"]}`}>{ctx.query}</p>
         <span className={`${styles["ip-information__btn"]} d-none d-sm-block text-center pt-2`}>
           <FormattedMessage id="ip.informations.btn"/>
         </span>

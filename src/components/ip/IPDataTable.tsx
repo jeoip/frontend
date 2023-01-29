@@ -45,11 +45,11 @@ const IPDataTable: React.FC<Props> = (props) => {
         <tbody className={`${styles["data-table__table-body"]}`}>
           <tr>
             <th><FormattedMessage id="ip.data.table.ip"/></th>
-            <th>{ctx.hostname}</th>
+            <th>{ctx.query}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.ip.numeric"/></th>
-            <th>{ipToInt(ctx.hostname)}</th>
+            <th>{ipToInt(ctx.query)}</th>
           </tr>
           <tr>
             <th><FormattedMessage id="ip.data.table.country"/></th>

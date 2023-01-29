@@ -15,6 +15,7 @@ export interface IPContextType {
   timezone: string,
   user_agent: string,
   hostname: string,
+  query: string,
   status: boolean
 }
 
@@ -33,6 +34,7 @@ const IPContext = createContext<IPContextType>({
   timezone: '',
   user_agent: '',
   hostname: '',
+  query: '',
   status: false
 });
 
