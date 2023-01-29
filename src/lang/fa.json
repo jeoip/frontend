@@ -45,7 +45,7 @@
   "ip.api.subtitle": "از طریق گزینه های زیر می توانید نحوه استفاده از هر مورد و نتیجه آن را مشاهده نمایید:",
   "ip.api.items.ip": "آی پی",
   "ip.api.items.country": "کشور",
-  "ip.api.items.country.iso": "country iso",
+  "ip.api.items.country.code": "کد کشور",
   "ip.api.items.city": "شهر",
   "ip.api.items.asn": "asn",
   "ip.api.items.json": "json",

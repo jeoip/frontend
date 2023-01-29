@@ -45,7 +45,7 @@
   "ip.api.subtitle": "Through the following options, you can see how to use each item and its result:",
   "ip.api.items.ip": "IP",
   "ip.api.items.country": "Country",
-  "ip.api.items.country.iso": "Country iso",
+  "ip.api.items.country.code": "Country code",
   "ip.api.items.city": "City",
   "ip.api.items.asn": "ASN",
   "ip.api.items.json": "JSON",

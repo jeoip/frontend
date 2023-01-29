@@ -14,7 +14,7 @@ export function getMessages() {
 export function getLocale() {
   let { locale } = useRouter()
   if (!locale) {
-    locale = 'en'
+    locale = 'fa'
   }
   return locale
 }
