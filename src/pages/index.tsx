@@ -9,13 +9,12 @@ import axios from "axios";
 import styles from '@/styles/Home.module.scss';
 import { GetServerSideProps, InferGetServerSidePropsType  } from "next";
 import { useRouter } from "next/router";
+import requestIp from "request-ip";
 
-
-export const getServerSideProps: GetServerSideProps<
-  {[key: string]: any}
-> = async () => {
+export const getServerSideProps: GetServerSideProps<{ [key: string]: any }> = async (context) => {
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/json`);
+    const ip = requestIp.getClientIp(context.req);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api${ip ? "/" + ip : ""}/json`);
     return {
       props: {
         data: response.data,
@@ -25,7 +24,7 @@ export const getServerSideProps: GetServerSideProps<
   } catch (error) {
     return {
       props: {
-        data: undefined,
+        data: null,
         error: true
       }
     }
